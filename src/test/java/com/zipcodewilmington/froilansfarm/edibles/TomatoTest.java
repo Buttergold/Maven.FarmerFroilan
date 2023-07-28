@@ -1,15 +1,17 @@
 package com.zipcodewilmington.froilansfarm.edibles;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 public class TomatoTest {
 
+    @Test
     public void InheritanceTest(){
         Tomato tomato = new Tomato();
         Assert.assertTrue(tomato instanceof edible);
 
     }
-
+    @Test
     public void getTomatoTest(){
         Tomato tomato = new Tomato();
         boolean expected = true;
@@ -17,7 +19,7 @@ public class TomatoTest {
        boolean actual = tomato.getHasBeen();
         Assert.assertEquals(expected, actual);
     }
-
+    @Test
     public void setTomatoTest(){
         Tomato tomato = new Tomato();
         boolean expected = true;
