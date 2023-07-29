@@ -2,6 +2,7 @@ package com.zipcodewilmington.froilansfarm.field;
 
 import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
+import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,12 +18,20 @@ public class CropRowTest {
     }
 
     @Test
+    public void testEmpty(){
+        CropRow row = new CropRow();
+
+        Assert.assertTrue(row.isEmpty());
+    }
+
+    @Test
     public void testHasCrops(){
         CropRow cr = new CropRow();
-        Botanist bob = new Farmer();
+        Farmer bob = new Farmer();
+        CornStalk cs = new CornStalk();
 
-        bob.plant(cr, Corn);  //how do we specify?
+        bob.plant(cr, cs);  //Do we specify the croptype or can it be something like <Crop>
 
-        Assert.assertTrue(cr.hasCrops());
+        Assert.assertFalse(cr.isEmpty());
     }
 }
