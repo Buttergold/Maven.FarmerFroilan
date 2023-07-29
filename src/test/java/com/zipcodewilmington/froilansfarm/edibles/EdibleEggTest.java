@@ -22,7 +22,7 @@ public class EdibleEggTest {
         boolean expected = true;
         EdibleEgg egg = new EdibleEgg();
 
-        egg.setHasBeenEaten = expected;
+        egg.setHasBeenEaten(expected);
         boolean actual = egg.getHasBeenEaten();
 
         Assert.assertEquals(expected, actual);
