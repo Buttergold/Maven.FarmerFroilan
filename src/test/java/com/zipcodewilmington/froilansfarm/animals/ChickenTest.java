@@ -65,7 +65,7 @@ public class ChickenTest {
         //When
         int actualSize = c.getListOfEatenFood().size();
         //Then
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expectedSize, actualSize);
     }
     @Test
     public void eatTest1(){
