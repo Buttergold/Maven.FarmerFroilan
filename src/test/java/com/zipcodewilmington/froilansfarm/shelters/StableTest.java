@@ -39,29 +39,6 @@ public class StableTest {
     }
 
     @Test
-    public void addHorseTest(){
-        //Given
-        Horse h = new Horse();
-        Stable stables = new Stable();
-        //When
-        stables.add(h);
-        //Then
-        Assert.assertTrue(stables.contains(h));
-    }
-
-    @Test
-    public void getHorseTest(){
-        //Given
-        Horse h = new Horse();
-        Stable stables = new Stable();
-        stables.add(h);
-        //When
-        Horse actual = stables.get(0);
-        //Then
-        Assert.assertTrue(h.equals(actual));
-    }
-
-    @Test
     public void getHorseTest(){
         //Given
         Horse h = new Horse();
