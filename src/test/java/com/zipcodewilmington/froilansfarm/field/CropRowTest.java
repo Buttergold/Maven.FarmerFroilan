@@ -1,5 +1,6 @@
 package com.zipcodewilmington.froilansfarm.field;
 
+import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import org.junit.Assert;
@@ -18,7 +19,7 @@ public class CropRowTest {
     @Test
     public void testHasCrops(){
         CropRow cr = new CropRow();
-        Farmer bob = new Farmer();
+        Botanist bob = new Farmer();
 
         bob.plant(cr, Corn);  //how do we specify?
 
