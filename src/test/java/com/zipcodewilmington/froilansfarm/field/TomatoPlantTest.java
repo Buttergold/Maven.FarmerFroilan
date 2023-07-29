@@ -45,6 +45,6 @@ public class TomatoPlantTest {
 
         Assert.assertNotNull(actual);
         Assert.assertTrue(actual instanceof Tomato);
-    }
 
+    }
 }
