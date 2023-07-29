@@ -2,6 +2,10 @@ package com.zipcodewilmington.froilansfarm.vehicles;
 
 import com.zipcodewilmington.froilansfarm.NoiseMaker;
 import com.zipcodewilmington.froilansfarm.Rideable;
+import com.zipcodewilmington.froilansfarm.animals.people.Person;
+import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
+import com.zipcodewilmington.froilansfarm.animals.people.Rider;
+import com.zipcodewilmington.froilansfarm.field.CropRow;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,6 +26,12 @@ public class CropdusterTest {
     @Test
     public void testFertilize(){
         Cropduster duster = new Cropduster();
+        CropRow row = new CropRow();
+        row.setHasCrops(true);
+
+        duster.fertilize(row);
+
+        Assert.assertTrue(row.hasBeenFertilized());
     }
 
     @Test
@@ -49,9 +59,16 @@ public class CropdusterTest {
     }
 
     @Test
-    public void testGetRider(){
+    public void testSetRider(){
         //given
         Cropduster duster = new Cropduster();
+        Rider pilot = new Pilot();
+
+        duster.setCurrentRider(pilot);
+
+        Rider actual = duster.getCurrentRider();
+
+        Assert.assertEquals(pilot, actual);
 
     }
 
