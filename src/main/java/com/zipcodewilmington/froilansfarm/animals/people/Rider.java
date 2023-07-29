@@ -1,4 +1,8 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
-public interface Rider {
+import com.zipcodewilmington.froilansfarm.Rideable;
+
+public interface Rider<RideableType extends Rideable> {
+    void mount(RideableType);
+    void dismount(RideableType);
 }
