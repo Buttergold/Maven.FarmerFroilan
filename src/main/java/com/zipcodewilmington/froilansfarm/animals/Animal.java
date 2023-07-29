@@ -1,4 +1,9 @@
 package com.zipcodewilmington.froilansfarm.animals;
 
-public class Animal {
+import com.zipcodewilmington.froilansfarm.NoiseMaker;
+
+public class Animal implements NoiseMaker, Eater {
+    public String makeNoise() {
+        return null;
+    }
 }
