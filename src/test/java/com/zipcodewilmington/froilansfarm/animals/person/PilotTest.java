@@ -1,5 +1,6 @@
 package com.zipcodewilmington.froilansfarm.animals.person;
 
+import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.NoiseMaker;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
 import com.zipcodewilmington.froilansfarm.animals.Eater;
@@ -8,15 +9,19 @@ import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
+import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import com.zipcodewilmington.froilansfarm.vehicles.Cropduster;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class PilotTest {
 
+    Pilot landa = new Pilot();
+    Cropduster duster = new Cropduster();
+    Farm farm = new Farm();
+
     @Test
     public void testInheritance(){
-        Pilot landa = new Pilot();
 
         Assert.assertTrue(landa instanceof Rider);
         Assert.assertTrue(landa instanceof Person);
@@ -27,8 +32,6 @@ public class PilotTest {
 
     @Test
     public void testMount(){
-        Pilot landa = new Pilot();
-        Cropduster duster = new Cropduster();
 
         Assert.assertNull(duster.getCurrentRider());
         landa.mount(duster);
@@ -38,8 +41,6 @@ public class PilotTest {
 
     @Test
     public void testDismount(){
-        Pilot landa = new Pilot();
-        Cropduster dusty = new Cropduster();
         landa.mount(dusty);
 
         Assert.assertTrue(landa, dusty.getCurrentRider());
@@ -50,7 +51,6 @@ public class PilotTest {
 
     @Test
     public void testEat(){
-        Pilot landa = new Pilot();
         int expected = 1;
         Assert.assertNull(landa.getListOfFoodEaten());
 
@@ -62,7 +62,6 @@ public class PilotTest {
 
     @Test
     public void testEat2(){
-        Pilot landa = new Pilot();
         EarOfCorn corn = new EarOfCorn();
 
         landa.eat(corn);
@@ -72,14 +71,26 @@ public class PilotTest {
 
     @Test
     public void testMakeNoise(){
-        Pilot froilanda = new Pilot();
         String expected = "Weeeeeeeeeeeeeee!!";
 
-        String actual = froilanda.makeNoise();
+        String actual = landa.makeNoise();
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void
+    public void testFarm(){ //is this needed?
+        //given
+
+        //when
+        // ??
+
+        //then
+        Assert.assertTrue(farm.getMyHouse().contains(froilanda));
+    }
+
+    @Test
+    public void testUseCropduster(){  //this seems redundant.  similar function on cropduster
+
+    }
 }
