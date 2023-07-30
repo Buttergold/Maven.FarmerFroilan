@@ -52,6 +52,7 @@ public class PilotTest {
     public void testEat(){
         Pilot landa = new Pilot();
         int expected = 1;
+        Assert.assertNull(landa.getListOfFoodEaten());
 
         landa.eat(new EdibleEgg());
         int actual = landa.getListOfFoodEaten().size;
@@ -68,4 +69,17 @@ public class PilotTest {
 
         Assert.assertTrue(landa.getListOfFoodEaten().contains(corn));
     }
+
+    @Test
+    public void testMakeNoise(){
+        Pilot froilanda = new Pilot();
+        String expected = "Weeeeeeeeeeeeeee!!";
+
+        String actual = froilanda.makeNoise();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void
 }
