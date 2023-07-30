@@ -1,4 +1,10 @@
 package com.zipcodewilmington.froilansfarm.vehicles;
 
-public interface Vehicle {
+import com.zipcodewilmington.froilansfarm.animals.people.Rider;
+
+public interface Vehicle<RiderType extends Rider> {
+
+    public void startEngine();
+
+    public void turnOfEngine();
 }

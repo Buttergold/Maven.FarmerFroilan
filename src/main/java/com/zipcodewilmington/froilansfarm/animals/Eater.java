@@ -9,6 +9,6 @@ public interface Eater<Food extends Edible> {
     public void eat(Edible...);
 
 
-    public void getListOfFoodEaten(List<Food>);
+    public List<Food> (getListOfFoodEaten());
 
 }
