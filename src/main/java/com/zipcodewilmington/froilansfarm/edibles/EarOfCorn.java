@@ -1,9 +1,15 @@
 package com.zipcodewilmington.froilansfarm.edibles;
 
-import com.sun.tools.javac.util.Assert;
+
 
 public class EarOfCorn extends Edible {
 
+    public EarOfCorn(){}
+
+    public EarOfCorn(boolean hasBeenEaten){
+
+        super(hasBeenEaten);
+    }
 
 
 }
