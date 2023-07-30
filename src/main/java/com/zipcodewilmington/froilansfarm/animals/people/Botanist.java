@@ -1,4 +1,6 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
-public class Botanist {
+public class Botanist extends Person {
+
+
 }

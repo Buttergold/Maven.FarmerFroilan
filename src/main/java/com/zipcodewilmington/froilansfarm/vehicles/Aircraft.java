@@ -1,4 +1,9 @@
 package com.zipcodewilmington.froilansfarm.vehicles;
 
-public interface Aircraft {
+import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
+
+public interface Aircraft implements Vehicle<Pilot> {
+
+    public void fly();
+
 }
