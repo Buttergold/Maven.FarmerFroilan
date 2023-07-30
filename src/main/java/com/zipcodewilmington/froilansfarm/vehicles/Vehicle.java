@@ -6,5 +6,5 @@ public interface Vehicle<RiderType extends Rider> {
 
     public void startEngine();
 
-    public void turnOfEngine();
+    public void turnOffEngine();
 }

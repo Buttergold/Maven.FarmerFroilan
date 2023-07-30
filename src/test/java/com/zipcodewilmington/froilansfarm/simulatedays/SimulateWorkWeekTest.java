@@ -9,9 +9,8 @@ import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
 import com.zipcodewilmington.froilansfarm.edibles.Tomato;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
-import com.zipcodewilmington.froilansfarm.vehicles.Cropduster;
+import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,7 +34,7 @@ public class SimulateWorkWeekTest {
         oldMacFarm.addAnimalsToShelter(froilan, froilanda);
 
         // add vehicles
-        oldMacFarm.addFarmVehicle(new Cropduster(), new Tractor());
+        oldMacFarm.addFarmVehicle(new CropDuster(), new Tractor());
         // initialize barn
         HashMap<Crop, Integer> savingTheBarn = new HashMap<Crop, Integer>();
         // enough corn for 3 days feeding chickens, horses, and people

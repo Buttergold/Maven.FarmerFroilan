@@ -4,7 +4,7 @@ import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.shelters.ChickenCoop;
 import com.zipcodewilmington.froilansfarm.shelters.Stable;
-import com.zipcodewilmington.froilansfarm.vehicles.Cropduster;
+import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 import org.junit.Assert;
 import org.junit.Test;
@@ -73,7 +73,7 @@ class FarmTest {
         int expected = 2;
         Farm thefarm = new Farm(3, 3, 1, expected);
         Tractor t = new Tractor();
-        Cropduster c = new Cropduster();
+        CropDuster c = new CropDuster();
         //When
         thefarm.addFarmVehicle(t, c);
         //Then

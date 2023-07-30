@@ -9,14 +9,14 @@ import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
-import com.zipcodewilmington.froilansfarm.vehicles.Cropduster;
+import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class PilotTest {
 
     Pilot landa = new Pilot();
-    Cropduster duster = new Cropduster();
+    CropDuster duster = new CropDuster();
     Farm farm = new Farm();
 
     @Test
