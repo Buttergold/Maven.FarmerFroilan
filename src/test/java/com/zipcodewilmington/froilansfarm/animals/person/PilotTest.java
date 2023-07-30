@@ -34,15 +34,16 @@ public class PilotTest {
 
         Assert.assertNull(duster.getCurrentRider());
         landa.mount(duster);
+        Person actual = duster.getCurrentRider();
 
-        Assert.assertTrue(landa, duster.getCurrentRider());
+        Assert.assertEquals(landa, actual);
     }
 
     @Test
     public void testDismount(){
         landa.mount(dusty);
 
-        Assert.assertTrue(landa, dusty.getCurrentRider());
+        Assert.assertEquals(landa, dusty.getCurrentRider());
         landa.dismount(dusty);
 
         Assert.assertNull(dusty.getCurrentRider());
