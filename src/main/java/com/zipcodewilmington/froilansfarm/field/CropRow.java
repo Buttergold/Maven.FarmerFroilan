@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CropRow<CropType extends Crop> extends ArrayList<CropType>{
-
     public CropRow(){
         super();
     }
