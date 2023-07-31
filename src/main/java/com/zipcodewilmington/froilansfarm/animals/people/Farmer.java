@@ -1,4 +1,15 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
-public class Farmer {
+import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
+
+public class Farmer extends Botanist implements Rider<Tractor>{
+    @Override
+    public void mount(Tractor rideable) {
+
+    }
+
+    @Override
+    public void dismount(Tractor rideable) {
+
+    }
 }

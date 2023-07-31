@@ -5,10 +5,13 @@ import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CropRow<CropType> extends ArrayList<CropType>{
+public class CropRow<CropType extends Crop> extends ArrayList<CropType>{
+
+    public CropRow(){
+        super();
+    }
 
     public boolean hasCrops(){
-
         return true;
     }
 }

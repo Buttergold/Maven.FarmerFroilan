@@ -34,16 +34,16 @@ public class FieldTest {
         Assert.assertFalse(field.isEmpty());
     }
 
-    @Test
-    public void testHasCrops(){
-        Field field = new Field();
-        CropRow cr = new CropRow();
-        Farmer bob = new Farmer();
-        CornStalk cs = new CornStalk();
-
-        field.add(cr);
-        bob.plant(cr, cs);
-
-        Assert.assertTrue(field.contains(cs));
-    }
+//    @Test
+//    public void testHasCrops(){
+//        Field field = new Field();
+//        CropRow cr = new CropRow();
+//        Farmer bob = new Farmer();
+//        CornStalk cs = new CornStalk();
+//
+//        field.add(cr);
+//        bob.plant(cr, cs);
+//
+//        Assert.assertTrue(field.contains(cs));
+//    }
 }

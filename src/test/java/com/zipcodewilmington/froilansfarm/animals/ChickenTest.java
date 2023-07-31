@@ -8,6 +8,8 @@ import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 public class ChickenTest {
     @Test
     public void inheritanceTest(){
@@ -63,7 +65,7 @@ public class ChickenTest {
         //When
         c.eat(new EarOfCorn(), new EarOfCorn());
         //When
-        int actualSize = c.getListOfEatenFood().size();
+        int actualSize = c.getListOfFoodEaten().size();
         //Then
         Assert.assertEquals(expectedSize, actualSize);
     }
@@ -74,7 +76,7 @@ public class ChickenTest {
         //When
         c.eat(new EarOfCorn(), new EarOfCorn());
         //When
-        List<EarOfCorn> actualList = c.getListOfEatenFood();
+        List<EarOfCorn> actualList = c.getListOfFoodEaten();
         //Then
         Assert.assertTrue(actualList.contains(new EarOfCorn()));
     }
@@ -114,7 +116,7 @@ public class ChickenTest {
         Chicken c = new Chicken();
         c.setFertilized(true);
         //When
-        boolean actual = c.hasBeenFertilized(true);
+        boolean actual = c.hasBeenFertilized();
         //Then
         Assert.assertTrue(actual);
     }

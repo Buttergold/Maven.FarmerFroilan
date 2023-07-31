@@ -6,6 +6,6 @@ public class EdibleEgg extends Edible {
 
     public EdibleEgg(boolean hasBeenEaten){
 
-        super(hasBeenEaten);
+//        super(hasBeenEaten);
     }
 }

@@ -4,8 +4,16 @@ import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
 
-public class Person extends Animal { //does not like <Edible>
+public class Person extends Animal<Edible> { //does not like <Edible>
     Farm farm;
 
-    public
+    @Override
+    public String makeNoise() {
+        return null;
+    }
+
+    @Override
+    public boolean isFull() {
+        return false;
+    }
 }

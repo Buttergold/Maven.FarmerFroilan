@@ -2,6 +2,7 @@ package com.zipcodewilmington.froilansfarm.field;
 
 import com.zipcodewilmington.froilansfarm.Produce;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
+import com.zipcodewilmington.froilansfarm.edibles.Tomato;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import com.zipcodewilmington.froilansfarm.field.crops.TomatoPlant;
 import org.junit.Assert;

@@ -8,7 +8,7 @@ public class EarOfCorn extends Edible {
 
     public EarOfCorn(boolean hasBeenEaten){
 
-        super(hasBeenEaten);
+//        super(hasBeenEaten);
     }
 
 

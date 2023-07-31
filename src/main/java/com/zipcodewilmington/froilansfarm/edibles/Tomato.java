@@ -4,6 +4,6 @@ public class Tomato extends Edible {
 
     public Tomato(){}
     public  Tomato(boolean hasBeenEaten){
-        super (hasBeenEaten);
+//        super (hasBeenEaten);
     }
 }
