@@ -4,7 +4,7 @@ import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
 
-public abstract class Person extends Animal<Edible>{ //does not like <Edible>
+public abstract class Person extends Animal<Edible>{
     Farm farm;
 
     public Person() {
