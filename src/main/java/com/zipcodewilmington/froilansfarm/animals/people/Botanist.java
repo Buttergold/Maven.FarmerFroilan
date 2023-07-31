@@ -1,6 +1,12 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
-public class Botanist extends Person {
+import com.zipcodewilmington.froilansfarm.field.CropRow;
+import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 
+public abstract class Botanist extends Person {
+    public Botanist(String name){
+        super(name);
+    }
 
+    abstract void plant(CropRow row, Crop cropToBePlanted);
 }

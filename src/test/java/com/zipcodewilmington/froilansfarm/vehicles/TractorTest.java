@@ -53,7 +53,7 @@ public class TractorTest {
     public void harvestCornTest(){
         //Given
         CropRow<CornStalk> thisRow = new CropRow();
-//        thisRow.setFertilized(true);
+        thisRow.fertilize();
         Tractor t = new Tractor();
         // DO I NEED TO SET THE DRIVER/STATE OF THE CAR?
         //When
@@ -68,7 +68,7 @@ public class TractorTest {
     public void harvestTomatoTest(){
         //Given
         CropRow<TomatoPlant> thisRow = new CropRow();
-//        thisRow.setFertilized(true);
+        thisRow.fertilize();
         Tractor t = new Tractor();
         // DO I NEED TO SET THE DRIVER/STATE OF THE CAR?
         //When
@@ -88,5 +88,16 @@ public class TractorTest {
         t.clearRow(thisRow);
         //Then
         Assert.assertTrue(thisRow.isEmpty());
+    }
+
+    @Test
+    public void testMakeNoise(){
+        //given
+        Tractor t = new Tractor();
+        String expected = "Vroom VROOM";
+        //
+        String actual = t.makeNoise();
+
+        Assert.assertEquals(expected, actual);
     }
 }

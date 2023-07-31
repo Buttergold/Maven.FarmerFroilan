@@ -14,7 +14,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class PilotTest {
-
+    // check the note for Farmer!!!
     Pilot landa = new Pilot();
     CropDuster duster = new CropDuster();
     Farm farm = new Farm();
