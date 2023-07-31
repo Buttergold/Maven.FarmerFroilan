@@ -12,6 +12,6 @@ public class CropRow<CropType extends Crop> extends ArrayList<CropType>{
     }
 
     public boolean hasCrops(){
-        return true;
+        return !this.isEmpty();
     }
 }

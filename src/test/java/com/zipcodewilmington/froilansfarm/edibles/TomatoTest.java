@@ -19,7 +19,7 @@ public class TomatoTest {
 
         // Instance Variables/Fields are usually PRIVATE and cannot be set directly
         // please try using a getter or setter
-        
+
 //        tomato.getHasBeenEaten = true;
 //        boolean actual = tomato.getHasBeen();
 //        Assert.assertEquals(expected, actual);
