@@ -36,6 +36,7 @@ public abstract class Animal<Food extends Edible> implements NoiseMaker, Eater<F
     public void eat(Food... foodToBeEaten) {
         for(Food f : foodToBeEaten) {
             listOfFoodEaten.add(f);
+            f.setHasBeenEaten(true);
         }
     }
 

@@ -23,6 +23,9 @@ public class Chicken extends Animal<EarOfCorn> implements Produce<EdibleEgg> {
     }
 
     public EdibleEgg yield(boolean hasBeenFertilized) {
+        if(hasBeenFertilized){
+            return new EdibleEgg();
+        }
         return null;
     }
 
@@ -40,6 +43,6 @@ public class Chicken extends Animal<EarOfCorn> implements Produce<EdibleEgg> {
     }
 
     public boolean isFull() {
-        return false;
+        return listOfFoodEaten.contains(new EarOfCorn(true));
     }
 }

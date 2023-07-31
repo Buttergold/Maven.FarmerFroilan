@@ -76,7 +76,7 @@ public class HorseTest {
         //When
         List<EarOfCorn> actualList = h.getListOfFoodEaten();
         //Then
-        Assert.assertTrue(actualList.contains(new EarOfCorn()));
+        Assert.assertTrue(actualList.contains(new EarOfCorn(true)));
     }
 
     @Test
