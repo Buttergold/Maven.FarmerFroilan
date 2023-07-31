@@ -18,16 +18,16 @@ public class FieldTest {
     }
 
     @Test
-    public void testEmpty(){
+    public void testIsClear(){
         Field field = new Field();
-        Assert.assertTrue(field.isEmpty());
+        Assert.assertTrue(field.isClear());
 
     }
 
     @Test
-    public void testHasCropRows(){
-        Field field = new Field();
-        CropRow row = new CropRow();
+    public void testHasCropRows(){  //not a good test
+        Field field = new Field(5);
+        CropRow row = new CropRow(5);
 
         field.add(row);
 
