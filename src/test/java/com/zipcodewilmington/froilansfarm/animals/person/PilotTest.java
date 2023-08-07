@@ -14,13 +14,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class PilotTest {
-
+    // check the note for Farmer!!!
     Pilot landa = new Pilot();
     CropDuster duster = new CropDuster();
     Farm farm = new Farm();
 
     @Test
     public void testInheritance(){
+        Pilot landa = new Pilot();
 
         Assert.assertTrue(landa instanceof Rider);
         Assert.assertTrue(landa instanceof Person);
@@ -34,19 +35,19 @@ public class PilotTest {
 
         Assert.assertNull(duster.getCurrentRider());
         landa.mount(duster);
-        Person actual = duster.getCurrentRider();
+        Pilot actual = duster.getCurrentRider();
 
         Assert.assertEquals(landa, actual);
     }
 
     @Test
     public void testDismount(){
-        landa.mount(dusty);
+        landa.mount(duster);
 
-        Assert.assertEquals(landa, dusty.getCurrentRider());
-        landa.dismount(dusty);
+        Assert.assertEquals(landa, duster.getCurrentRider());
+        landa.dismount(duster);
 
-        Assert.assertNull(dusty.getCurrentRider());
+        Assert.assertNull(duster.getCurrentRider());
     }
 
     @Test
@@ -55,7 +56,7 @@ public class PilotTest {
         Assert.assertNull(landa.getListOfFoodEaten());
 
         landa.eat(new EdibleEgg());
-        int actual = landa.getListOfFoodEaten().size;
+        int actual = landa.getListOfFoodEaten().size();
 
         Assert.assertEquals(expected, actual);
     }
@@ -86,7 +87,7 @@ public class PilotTest {
         // ??
 
         //then
-        Assert.assertTrue(farm.getMyHouse().contains(froilanda));
+//        Assert.assertTrue(farm.getMyHouse().contains(froilanda));
     }
 
     @Test

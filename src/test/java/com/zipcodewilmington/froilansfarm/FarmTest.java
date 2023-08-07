@@ -14,7 +14,7 @@ class FarmTest {
     @Test
     public void constructorTest() {
         //Given
-        String expectedSize = 1;
+        int expectedSize = 1;
         //When
         // should be stables, coops, croprows, vehicles
         Farm thefarm = new Farm(1, 1, 1, 1);
@@ -22,7 +22,7 @@ class FarmTest {
         Assert.assertEquals(expectedSize, thefarm.getListOfStables().size());
         Assert.assertEquals(expectedSize, thefarm.getListOfCoops().size());
         Assert.assertEquals(expectedSize, thefarm.getField().size());
-        Assert.assertEquals(expectedSize, thefarm.getListOfVehicles().size());
+        Assert.assertEquals(expectedSize, thefarm.getListOfFarmVehicles().size());
     }
 
     @Test

@@ -1,9 +1,7 @@
 package com.zipcodewilmington.froilansfarm.field;
 
-import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
-import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -30,8 +28,13 @@ public class CropRowTest {
         Farmer bob = new Farmer();
         CornStalk cs = new CornStalk();
 
-        bob.plant(cr, cs);  //Do we specify the croptype or can it be something like <Crop>
+        Assert.assertFalse(true);
+        // Think about what Data Type the CropRow is
+        // CropRow extends List<> and probably more specifically an ArrayList
+        // what can we do to ArrayLists to add crops?
 
-        Assert.assertFalse(cr.isEmpty());
+//        bob.plant(cr, cs);  //Do we specify the croptype or can it be something like <Crop>
+//
+//        Assert.assertFalse(cr.isEmpty());
     }
 }

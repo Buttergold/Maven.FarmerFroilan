@@ -8,6 +8,8 @@ import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 public class CornStalkTest {
 
     @Test
@@ -21,21 +23,21 @@ public class CornStalkTest {
     @Test
     public void testFertilized() {
         CornStalk cs = new CornStalk();
-        Assert.assertFalse(cs.isFertilized());
+        Assert.assertFalse(cs.hasBeenFertilized());
 
         cs.setFertilized(true);
 
-        Assert.assertTrue(cs.isFertilized());
+        Assert.assertTrue(cs.hasBeenFertilized());
     }
 
     @Test
     public void testHarvested(){
         CornStalk cs = new CornStalk();
-        Assert.assertFalse(cs.isHarvested());
+        Assert.assertFalse(cs.hasBeenHarvested());
 
         cs.setHarvested(true);
 
-        Assert.assertTrue(cs.isHarvested());
+        Assert.assertTrue(cs.hasBeenHarvested());
     }
 
     @Test
@@ -49,4 +51,45 @@ public class CornStalkTest {
 
     }
 
+    @Test
+    public void testYieldWithNoParams(){
+        CornStalk cs = new CornStalk();
+        cs.setFertilized(true);
+        cs.setHarvested(true);
+
+        List<EarOfCorn> actual = cs.yield();
+
+        Assert.assertNotNull(actual);
+        Assert.assertFalse(actual.isEmpty());
+        Assert.assertEquals(3, actual.size());
+    }
+    @Test
+    public void testYieldWithNoParams1(){
+        CornStalk cs = new CornStalk();
+        cs.setFertilized(true);
+
+        List<EarOfCorn> actual = cs.yield();
+
+        Assert.assertNotNull(actual);
+        Assert.assertTrue(actual.isEmpty());
+    }
+    @Test
+    public void testYieldWithNoParams2(){
+        CornStalk cs = new CornStalk();
+        cs.setHarvested(true);
+
+        List<EarOfCorn> actual = cs.yield();
+
+        Assert.assertNotNull(actual);
+        Assert.assertTrue(actual.isEmpty());
+    }
+    @Test
+    public void testYieldWithNoParams3(){
+        CornStalk cs = new CornStalk();
+
+        List<EarOfCorn> actual = cs.yield();
+
+        Assert.assertNotNull(actual);
+        Assert.assertTrue(actual.isEmpty());
+    }
 }

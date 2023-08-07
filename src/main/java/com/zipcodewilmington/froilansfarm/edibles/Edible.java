@@ -3,10 +3,10 @@ package com.zipcodewilmington.froilansfarm.edibles;
 public abstract class Edible {
     protected boolean hasBeenEaten;
 
-    public void Edible(){
-
+    public Edible(){
+        this(false);
     }
-    public void Edible(boolean hasBeenEaten){
+    public Edible(boolean hasBeenEaten){
         this.hasBeenEaten = hasBeenEaten;
     }
 
@@ -16,4 +16,9 @@ public abstract class Edible {
         this.hasBeenEaten = hasBeenEaten;
     }
 
+    @Override
+    public boolean equals(Object o){
+        Edible e = (Edible) o;
+        return this.hasBeenEaten == e.hasBeenEaten;
+    }
 }

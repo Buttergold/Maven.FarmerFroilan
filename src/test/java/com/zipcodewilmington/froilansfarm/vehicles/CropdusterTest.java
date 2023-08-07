@@ -5,6 +5,7 @@ import com.zipcodewilmington.froilansfarm.Rideable;
 import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
+import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,7 +26,8 @@ public class CropdusterTest {
     public void testFertilize(){
         CropDuster duster = new CropDuster();
         CropRow row = new CropRow();
-        row.setHasCrops(true);
+//        row.setHasCrops(true);
+        row.add(new CornStalk());
 
         duster.fertilize(row);
 
@@ -49,18 +51,18 @@ public class CropdusterTest {
         //when
         duster.startEngine();
         //then
-        Assert.assertTrue(duster.getIsEngineOn());
+        Assert.assertTrue(duster.isEngineOn());
 
         //when
-        duster.turnEngineOff();
-        Assert.assertFalse(duster.getIsEngineOn());
+        duster.turnOffEngine();
+        Assert.assertFalse(duster.isEngineOn());
     }
 
     @Test
     public void testSetRider(){
         //given
         CropDuster duster = new CropDuster();
-        Rider pilot = new Pilot();
+        Pilot pilot = new Pilot();
 
         duster.setCurrentRider(pilot);
 

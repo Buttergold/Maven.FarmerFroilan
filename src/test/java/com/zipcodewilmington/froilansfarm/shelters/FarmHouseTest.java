@@ -1,5 +1,6 @@
 package com.zipcodewilmington.froilansfarm.shelters;
 
+import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.animals.people.Person;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,7 +31,7 @@ public class FarmHouseTest {
     @Test
     public void addPersonTest(){
         //Given
-        Person h = new Person();
+        Person h = new Farmer();
         FarmHouse farmHouse = new FarmHouse();
         //When
         farmHouse.add(h);
@@ -41,7 +42,7 @@ public class FarmHouseTest {
     @Test
     public void getPersonTest(){
         //Given
-        Person p = new Person();
+        Person p = new Farmer();
         FarmHouse farmHouse = new FarmHouse();
         farmHouse.add(p);
         //When
@@ -53,7 +54,7 @@ public class FarmHouseTest {
     @Test
     public void isEmptyTest(){
         //Given
-        Person p = new Person();
+        Person p = new Farmer();
         FarmHouse farmHouse = new FarmHouse();
         farmHouse.add(p);
         //When

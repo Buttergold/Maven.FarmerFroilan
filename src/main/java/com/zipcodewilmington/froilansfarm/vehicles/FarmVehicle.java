@@ -5,28 +5,35 @@ import com.zipcodewilmington.froilansfarm.NoiseMaker;
 import com.zipcodewilmington.froilansfarm.Rideable;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 
-public class FarmVehicle<RiderType extends Rider> implements Rideable, NoiseMaker {
+public abstract class FarmVehicle<RiderType extends Rider> implements Vehicle<RiderType> {
 
-    boolean isEngineOn;
-    RiderType currentDriver;
+    protected boolean isEngineOn;
+    protected RiderType currentDriver;
 
     public FarmVehicle() {
+        this(null, false);
     }
     public FarmVehicle(RiderType currentDriver, boolean isEngineOn){
         this.currentDriver = currentDriver;
         this.isEngineOn = isEngineOn;
     }
 
-    public void operate(Farm farm){
+    //getters and setters
+    public boolean isEngineOn() {
+        return isEngineOn;
+    }
+    public RiderType getCurrentRider() {
+        return currentDriver;
+    }
+    public void setCurrentRider(RiderType currentDriver) {
+        this.currentDriver = currentDriver;
     }
 
-    @Override
-    public void ride() {
-
+    public void startEngine() {
+        isEngineOn = true;
     }
 
-    @Override
-    public String makeNoise() {
-        return null;
+    public void turnOffEngine() {
+        isEngineOn = false;
     }
 }
