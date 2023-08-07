@@ -9,5 +9,5 @@ public abstract class Botanist extends Person {
         super(name);
     }
 
-    abstract <CropType extends Crop<Edible>> void plant(CropRow<CropType> row, CropType cropToBePlanted);
+    abstract <CropType extends Crop> void plant(CropRow<CropType> row, CropType cropToBePlanted);
 }
