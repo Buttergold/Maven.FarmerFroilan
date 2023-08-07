@@ -5,14 +5,15 @@ import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class CropRowTest {
-
     @Test
     public void testInheritance(){
         CropRow cr = new CropRow();
         Assert.assertTrue(cr instanceof Collection);
+        Assert.assertTrue(cr instanceof ArrayList);
     }
 
     @Test
