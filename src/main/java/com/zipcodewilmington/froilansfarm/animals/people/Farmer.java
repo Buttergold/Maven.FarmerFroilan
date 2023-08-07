@@ -1,5 +1,6 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
+import com.zipcodewilmington.froilansfarm.edibles.Edible;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
@@ -25,11 +26,12 @@ public class Farmer extends Botanist implements Rider<Tractor> {
 
     @Override
     public String makeNoise() {
-        return null;
+        return "E I E I O";
     }
 
-    @Override
-    void plant(CropRow row, Crop cropToBePlanted) {
-        row.add(cropToBePlanted);
+    public <CropType extends Crop<Edible>> void plant(CropRow<CropType> row, CropType cropToBePlanted) {
+        for(int i = 0; i < row.getNumOfCrops(); i++) {
+            row.add(cropToBePlanted);
+        }
     }
 }

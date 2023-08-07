@@ -25,7 +25,6 @@ public class FarmerTest {
     Farmer froilan = new Farmer();
     Tractor tractor = new Tractor();
 
-
     @Test
     public void testInheritance() {
         Assert.assertTrue(froilan instanceof Botanist);
@@ -86,7 +85,6 @@ public class FarmerTest {
         // simulating the work week
 
         Assert.assertNotNull(horse.getListOfFoodEaten());
-
     }
 
 
