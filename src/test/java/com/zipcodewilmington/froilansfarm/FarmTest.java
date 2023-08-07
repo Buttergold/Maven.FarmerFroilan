@@ -4,7 +4,7 @@ import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.shelters.ChickenCoop;
 import com.zipcodewilmington.froilansfarm.shelters.Stable;
-import com.zipcodewilmington.froilansfarm.vehicles.Cropduster;
+import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +14,7 @@ class FarmTest {
     @Test
     public void constructorTest() {
         //Given
-        String expectedSize = 1;
+        int expectedSize = 1;
         //When
         // should be stables, coops, croprows, vehicles
         Farm thefarm = new Farm(1, 1, 1, 1);
@@ -22,7 +22,7 @@ class FarmTest {
         Assert.assertEquals(expectedSize, thefarm.getListOfStables().size());
         Assert.assertEquals(expectedSize, thefarm.getListOfCoops().size());
         Assert.assertEquals(expectedSize, thefarm.getField().size());
-        Assert.assertEquals(expectedSize, thefarm.getListOfVehicles().size());
+        Assert.assertEquals(expectedSize, thefarm.getListOfFarmVehicles().size());
     }
 
     @Test
@@ -73,7 +73,7 @@ class FarmTest {
         int expected = 2;
         Farm thefarm = new Farm(3, 3, 1, expected);
         Tractor t = new Tractor();
-        Cropduster c = new Cropduster();
+        CropDuster c = new CropDuster();
         //When
         thefarm.addFarmVehicle(t, c);
         //Then

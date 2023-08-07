@@ -1,4 +1,6 @@
 package com.zipcodewilmington.froilansfarm.shelters;
 
-public class Stable {
+import com.zipcodewilmington.froilansfarm.animals.Horse;
+
+public class Stable extends Shelter<Horse>{
 }

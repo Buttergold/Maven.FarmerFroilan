@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface Eater<Food extends Edible> {
 
-    public void eat(Edible...);
+    void eat(Food... foodToBeEaten);
 
-
-    public List<Food> (getListOfFoodEaten());
+    List<Food> getListOfFoodEaten();
 
 }

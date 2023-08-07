@@ -56,14 +56,14 @@ public class HorseTest {
     }
 
     @Test
-    public  void eatTest(){
+    public void eatTest(){
         //Given
         int expectedSize = 2;
         Horse h = new Horse();
         //When
         h.eat(new EarOfCorn(), new EarOfCorn());
         //When
-        int actualSize = h.getListOfEatenFood().size();
+        int actualSize = h.getListOfFoodEaten().size();
         //Then
         Assert.assertEquals(expectedSize, actualSize);
     }
@@ -74,9 +74,9 @@ public class HorseTest {
         //When
         h.eat(new EarOfCorn(), new EarOfCorn());
         //When
-        List<EarOfCorn> actualList = h.getListOfEatenFood();
+        List<EarOfCorn> actualList = h.getListOfFoodEaten();
         //Then
-        Assert.assertTrue(actualList.contains(new EarOfCorn()));
+        Assert.assertTrue(actualList.contains(new EarOfCorn(true)));
     }
 
     @Test
