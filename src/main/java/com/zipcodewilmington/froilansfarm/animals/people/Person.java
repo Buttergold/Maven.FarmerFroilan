@@ -24,6 +24,7 @@ public abstract class Person extends Animal<Edible>{
         this.farm = farm;
     }
 
+    public Farm getFarm(){ return this.farm;}
     public boolean hasFarm(){
         return this.farm != null;
     }

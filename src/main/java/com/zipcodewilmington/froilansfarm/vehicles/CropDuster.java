@@ -1,19 +1,24 @@
 package com.zipcodewilmington.froilansfarm.vehicles;
 
+import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 
 public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
-//    Pilot currentDriver;
-//    boolean isEngineOn;
+    Pilot currentDriver;
+    boolean isEngineOn ;
+    boolean isInAir ;
+
 
     public CropDuster(){
-        this(null, false);
+        this(null, false, false);
     }
-    public CropDuster(Pilot currentDriver, boolean isEngineOn){
+    public CropDuster(Pilot currentDriver, boolean isEngineOn, boolean isInAir){
+
         super(currentDriver, isEngineOn);
+        this.isInAir = isInAir;
     }
 
     @Override
@@ -23,6 +28,7 @@ public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
 
     @Override
     public void fly() {
+        isInAir = true;
     }
 
     public void fertilize(CropRow row){
@@ -33,6 +39,14 @@ public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
 
     @Override
     public void ride() {
+        if (currentDriver == null) {
+            return;
+        }
+        if (isEngineOn == false){
+            return;
+        }
+        fly();
+        //operate(currentDriver.getFarm());
 
     }
 }
