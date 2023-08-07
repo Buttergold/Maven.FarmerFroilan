@@ -4,7 +4,7 @@ import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
 
-public abstract class Person extends Animal<Edible>{ //does not like <Edible>
+public abstract class Person extends Animal<Edible>{
     Farm farm;
 
     public Person() {
@@ -24,6 +24,7 @@ public abstract class Person extends Animal<Edible>{ //does not like <Edible>
         this.farm = farm;
     }
 
+    public Farm getFarm(){ return this.farm;}
     public boolean hasFarm(){
         return this.farm != null;
     }
