@@ -3,6 +3,11 @@ package com.zipcodewilmington.froilansfarm.animals.people;
 import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 
 public class Pilot extends Person implements Rider<CropDuster> {
+    
+    public String tomato; 
+    public String egg;
+    public String earOfCorn;
+
     // constructor
     public Pilot(){
         this("default pilot name");
@@ -11,9 +16,37 @@ public class Pilot extends Person implements Rider<CropDuster> {
         super(name);
     }
 
+
     @Override
     public String makeNoise() {
-        return null;
+
+
+        return "Weeeeeeeeeeeeeee!!";
+    }
+
+    @Override
+    public boolean isFull(){
+        int earOfCornCtr = 0;
+        int tomatoCtr = 0;
+        int eggCtr = 0;
+        for (int i = 0; i <this.listOfFoodEaten.size(); i++) {
+            if (this.listOfFoodEaten.get(i).equals("earOfCorn")) {
+                earOfCornCtr++;
+            }
+            if (this.listOfFoodEaten.get(i).equals("tomato")) {
+                tomatoCtr++;
+            }
+            if (this.listOfFoodEaten.get(i).equals("egg")) {
+                eggCtr++;
+            }
+        } if (earOfCornCtr >= 2 && tomatoCtr >= 1 && eggCtr >= 2)
+            return true;
+
+
+            else{
+
+        
+        return false;}
     }
 
     @Override

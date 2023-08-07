@@ -94,4 +94,6 @@ public class PilotTest {
     public void testUseCropduster(){  //this seems redundant.  similar function on cropduster
 
     }
+    @Test
+    public void isFullTest(){}
 }
