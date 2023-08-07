@@ -3,6 +3,9 @@ package com.zipcodewilmington.froilansfarm.animals.people;
 import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
+import com.zipcodewilmington.froilansfarm.shelters.Shelter;
+
+import java.util.List;
 
 public abstract class Person extends Animal<Edible>{
     Farm farm;
@@ -24,6 +27,7 @@ public abstract class Person extends Animal<Edible>{
         this.farm = farm;
     }
 
+    public Farm getFarm(){ return this.farm;}
     public boolean hasFarm(){
         return this.farm != null;
     }
@@ -31,5 +35,13 @@ public abstract class Person extends Animal<Edible>{
     @Override
     public boolean isFull() {
         return false;
+    }
+
+    public void feedAllAnimals(List<Shelter<Animal>> shelter){
+//        for(Shelter s : shelter){
+//            for(Animal<Food> a : s){
+//                if()
+//            }
+//        }
     }
 }
