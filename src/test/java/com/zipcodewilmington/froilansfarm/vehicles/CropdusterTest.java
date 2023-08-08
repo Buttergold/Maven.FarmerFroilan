@@ -49,11 +49,14 @@ public class CropdusterTest {
 
     @Test
     public void testOperate(){
+        Farm farm = new Farm();
+        Pilot froilanda = new Pilot("Froilanda",farm);
+        CropDuster duster = new CropDuster(froilanda, true, true);
+        farm.getField().get(0).add(new CornStalk());
 
-        Pilot froilanda = new Pilot("Froilanda");
-        CropDuster duster = new CropDuster();
-
-
+        Assert.assertTrue(duster.isEngineOn());
+        Assert.assertTrue(duster.isInAir());
+        Assert.assertTrue(duster.operate(farm));
     }
 
     @Test
