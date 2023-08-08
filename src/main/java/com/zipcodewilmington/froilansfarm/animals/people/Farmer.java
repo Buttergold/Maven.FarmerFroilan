@@ -17,7 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Farmer extends Botanist implements Rider<Tractor> {
+public class Farmer extends Botanist implements Rider<Rideable> {
     // constructor
     public Farmer() {
         this("default farmer name");
@@ -29,21 +29,21 @@ public class Farmer extends Botanist implements Rider<Tractor> {
         super(name, farm);
     }
 
-    @Override
-    public void mount(Tractor tractor) {
-        tractor.setCurrentRider(this);
-    }
-    public void mount(Horse rideable){
-        rideable.setCurrentRider(this);
-    }
-
-    @Override
-    public void dismount(Tractor tractor) {
-        tractor.setCurrentRider(null);
-    }
-    public void dismount(Horse rideable){
-        rideable.setCurrentRider(null);
-    }
+//    @Override
+//    public void mount(Tractor tractor) {
+//        tractor.setCurrentRider(this);
+//    }
+//    public void mount(Horse rideable){
+//        rideable.setCurrentRider(this);
+//    }
+//
+//    @Override
+//    public void dismount(Tractor tractor) {
+//        tractor.setCurrentRider(null);
+//    }
+//    public void dismount(Horse rideable){
+//        rideable.setCurrentRider(null);
+//    }
 
     @Override
     public String makeNoise() {
@@ -108,5 +108,15 @@ public class Farmer extends Botanist implements Rider<Tractor> {
         }
 
         return corn >= 1 && tomato >= 2 && egg >= 5;
+    }
+
+    @Override
+    public void mount(Rideable rideable) {
+        rideable.setCurrentRider(this);
+    }
+
+    @Override
+    public void dismount(Rideable rideable) {
+        rideable.setCurrentRider(null);
     }
 }

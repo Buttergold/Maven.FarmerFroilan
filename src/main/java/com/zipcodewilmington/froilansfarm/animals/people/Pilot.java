@@ -1,15 +1,12 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
 import com.zipcodewilmington.froilansfarm.Farm;
-import com.zipcodewilmington.froilansfarm.animals.Horse;
+import com.zipcodewilmington.froilansfarm.Rideable;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
 import com.zipcodewilmington.froilansfarm.edibles.Tomato;
-import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 
-public class Pilot extends Person implements Rider<CropDuster> {
-
-
+public class Pilot extends Person implements Rider<Rideable> {
     // constructor
     public Pilot(){
         this("default pilot name");
@@ -24,8 +21,6 @@ public class Pilot extends Person implements Rider<CropDuster> {
 
     @Override
     public String makeNoise() {
-
-
         return "Weeeeeeeeeeeeeee!!";
     }
 
@@ -52,19 +47,29 @@ public class Pilot extends Person implements Rider<CropDuster> {
         }
     }
 
+//    @Override
+//    public void mount(CropDuster rideable) {
+//       rideable.setCurrentRider(this);
+//    }
+//    public void mount(Horse rideable) {
+//        rideable.setCurrentRider(this);
+//    }
+//
+//    @Override
+//    public void dismount(CropDuster rideable) {
+//        rideable.setCurrentRider(null);
+//    }
+//    public void dismount(Horse rideable) {
+//        rideable.setCurrentRider(null);
+//    }
+
     @Override
-    public void mount(CropDuster rideable) {
-       rideable.setCurrentRider(this);
-    }
-    public void mount(Horse rideable) {
+    public void mount(Rideable rideable) {
         rideable.setCurrentRider(this);
     }
 
     @Override
-    public void dismount(CropDuster rideable) {
-        rideable.setCurrentRider(null);
-    }
-    public void dismount(Horse rideable) {
+    public void dismount(Rideable rideable) {
         rideable.setCurrentRider(null);
     }
 }
