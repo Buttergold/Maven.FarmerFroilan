@@ -1,8 +1,5 @@
 package com.zipcodewilmington.froilansfarm.field;
 
-import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
-import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
-import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
 import com.zipcodewilmington.froilansfarm.field.crops.TomatoPlant;
 import org.junit.Assert;
 import org.junit.Test;
