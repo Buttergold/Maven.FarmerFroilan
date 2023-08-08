@@ -4,6 +4,7 @@ import com.zipcodewilmington.froilansfarm.animals.Animal;
 import com.zipcodewilmington.froilansfarm.animals.Chicken;
 import com.zipcodewilmington.froilansfarm.animals.Horse;
 import com.zipcodewilmington.froilansfarm.animals.people.Person;
+import com.zipcodewilmington.froilansfarm.edibles.Edible;
 import com.zipcodewilmington.froilansfarm.field.Field;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import com.zipcodewilmington.froilansfarm.shelters.*;
@@ -11,6 +12,7 @@ import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import com.zipcodewilmington.froilansfarm.vehicles.FarmVehicle;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class Farm {
     // IDEA! should this be a regular object array?
     // if the number of vehicles doesn't change on a day to day basis,
     // i don't see why this CAN'T be a regular array
-    private HashMap<Crop, Integer> barn;
+    private HashMap<Edible, Integer> barn;
     private Field theField;
 
     // biiiig constructor
@@ -39,9 +41,10 @@ public class Farm {
         listOfCoops = new ArrayList<ChickenCoop>();
         populate(listOfCoops, ChickenCoop.class, numOfChickenCoops);
         // the field is just a field
-        theField = new Field();
+        theField = new Field(numOfCropRows);
         // i know setting the initial capacity doesn't do anything tbh
-        listOfFarmVehicles = new ArrayList<FarmVehicle>(2);
+        listOfFarmVehicles = new ArrayList<FarmVehicle>(numOfVehicles);
+        myHouse = new FarmHouse();
     }
 
     private <T extends Shelter> void populate(List<T> listToPopulate, Class<T> shelterClass, int numOfShelter) {
@@ -49,22 +52,19 @@ public class Farm {
         // shaky on how it works but it's a factory
         Constructor<?> cons = null;
         try {
-            cons = shelterClass.getConstructor(String.class);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        }
-
-        for(int i = 0; i < numOfShelter; i++){
-            try {
+            cons = shelterClass.getConstructor();
+            for(int i = 0; i < numOfShelter; i++){
                 T object = (T) cons.newInstance();
                 listToPopulate.add(object);
-            } catch (InstantiationException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
             }
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -100,11 +100,11 @@ public class Farm {
         this.listOfFarmVehicles = listOfFarmVehicles;
     }
 
-    public HashMap<Crop, Integer> getBarn() {
+    public HashMap<Edible, Integer> getBarn() {
         return barn;
     }
 
-    public void setBarn(HashMap<Crop, Integer> barn) {
+    public void setBarn(HashMap<Edible, Integer> barn) {
         this.barn = barn;
     }
 
@@ -116,8 +116,38 @@ public class Farm {
         this.theField = theField;
     }
 
-    public <T extends Animal> void addAnimalsToShelter(Class<T> c, int numOfAnimalsToAdd) {
+    public <T extends Animal> boolean addAnimalsToShelter(T exampleAnimal, int numOfAnimalsToAdd) {
+        Constructor<?> cons = null;
+        try {
+            cons = exampleAnimal.getClass().getConstructor();
+            List<? extends Shelter> aminalShelter;
+            if(exampleAnimal instanceof Chicken){
+                aminalShelter = listOfCoops;
+            }
+            else if(exampleAnimal instanceof Horse){
+                aminalShelter = listOfStables;
+            }
+            else{
+                return false;
+            }
+            int count = 0;
+            for(int i = 0; i < numOfAnimalsToAdd; i++){
+                T object = (T) cons.newInstance();
+                aminalShelter.get(count++).add(object);
+                count = count % aminalShelter.size();
+            }
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
+
     public <T extends Animal> void addAnimalsToShelter(T... animalsToAdd) {
         for(T aminal : animalsToAdd){
             if(aminal instanceof Person){
@@ -127,11 +157,19 @@ public class Farm {
     }
 
     public int getTotalNumOfHorses() {
-        return 0;
+        int total = 0;
+        for(Stable s : listOfStables){
+            total += s.size();
+        }
+        return total;
     }
 
     public int getTotalNumOfChickens() {
-        return 0;
+        int total = 0;
+        for(ChickenCoop cc : listOfCoops){
+            total += cc.size();
+        }
+        return total;
     }
 
     public int getTotalNumOfPeople() {
@@ -139,5 +177,26 @@ public class Farm {
     }
 
     public void addFarmVehicle(FarmVehicle... farmVehicles) {
+        for(FarmVehicle fv : farmVehicles){
+            listOfFarmVehicles.add(fv);
+        }
+    }
+
+    public Tractor getTractor(){
+        for(FarmVehicle fv : listOfFarmVehicles){
+            if(fv instanceof Tractor){
+                return (Tractor) fv;
+            }
+        }
+        return null;
+    }
+
+    public CropDuster getCropDuster(){
+        for(FarmVehicle fv : listOfFarmVehicles){
+            if(fv instanceof CropDuster){
+                return (CropDuster) fv;
+            }
+        }
+        return null;
     }
 }

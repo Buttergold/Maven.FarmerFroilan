@@ -3,24 +3,26 @@ package com.zipcodewilmington.froilansfarm.animals.person;
 import com.zipcodewilmington.froilansfarm.NoiseMaker;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
 import com.zipcodewilmington.froilansfarm.animals.Eater;
+import com.zipcodewilmington.froilansfarm.animals.Horse;
 import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.animals.people.Person;
+import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
+import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
 import com.zipcodewilmington.froilansfarm.edibles.Tomato;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
 import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
 import com.zipcodewilmington.froilansfarm.field.crops.TomatoPlant;
+import com.zipcodewilmington.froilansfarm.shelters.Stable;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.sql.Array;
+import java.util.ArrayList;
+
 public class FarmerTest {
-    // HI! Note to the person who wrote this code:
-    // I personally feel like this is pretty bad practice to have local variables
-    // Why? Tests are run independently and not necessarily in the order that you have written them in this file.
-    // If you want to set up variables that all Tests will use, look into the @Before tag
-    // Setting local variables up means that you're going to be constantly changing the state of these variables,
-    // and as such it's quite difficult to keep track of their exact state.
+
     @Test
     public void testInheritance() {
         Farmer froilan = new Farmer();
@@ -77,16 +79,22 @@ public class FarmerTest {
     }
 
     @Test
-    public void testFeedAllAnimals(){
-
+    public void testFeedAllHorses(){
         // good question: figure out how you want it to work
         // will we feed the animals a set amount based on what type of animal it is
         // maybe once that's done we can get all the horses on the barn and see if they're full
         // there are many options - we can even not test this since it's more relevant to
         // simulating the work week
-
-//        Assert.assertNotNull(horse.getListOfFoodEaten());
-        Assert.assertTrue(false);
+        // Given
+        Farmer froilan = new Farmer();
+        Stable theStable = new Stable();
+        theStable.add(new Horse());
+        ArrayList<Stable> theStablesPlural = new ArrayList<Stable>();
+        theStablesPlural.add(theStable);
+        // When
+        froilan.feedAllAnimals(theStablesPlural);
+        // Then
+        Assert.assertEquals(true, theStable.get(0).isFull());
     }
 
     @Test
@@ -109,5 +117,27 @@ public class FarmerTest {
         froilan.plant(row, new CornStalk());
         //Then
         row.hasCrops();
+    }
+
+    @Test
+    public void isNotFullTest(){
+        //Given
+        Farmer froilan = new Farmer();
+        froilan.eat(new EarOfCorn(), new Tomato(), new EdibleEgg());
+        //When
+        boolean actual = froilan.isFull();
+        //Then
+        Assert.assertEquals(false, actual);
+    }
+    @Test
+    public void isFullTest(){
+        //Given
+        Farmer froilan = new Farmer();
+        froilan.eat(new EarOfCorn(), new Tomato(), new EdibleEgg(), new Tomato(), new EdibleEgg());
+        froilan.eat(new EdibleEgg(), new EdibleEgg(), new EdibleEgg());
+        //When
+        boolean actual = froilan.isFull();
+        //Then
+        Assert.assertEquals(true, actual);
     }
 }

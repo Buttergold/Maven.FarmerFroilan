@@ -42,4 +42,9 @@ public class Tractor extends FarmVehicle<Farmer>{
     boolean operate(Farm farm) {
         return false;
     }
+
+    @Override
+    boolean operate(Farm farm) {
+        return false;
+    }
 }
