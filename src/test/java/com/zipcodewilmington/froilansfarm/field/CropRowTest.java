@@ -29,13 +29,15 @@ public class CropRowTest {
         Farmer bob = new Farmer();
         CornStalk cs = new CornStalk();
 
-        Assert.assertFalse(true);
+        Assert.assertFalse(cr.hasCrops());
+
+        cr.add(new CornStalk());
         // Think about what Data Type the CropRow is
         // CropRow extends List<> and probably more specifically an ArrayList
         // what can we do to ArrayLists to add crops?
 
 //        bob.plant(cr, cs);  //Do we specify the croptype or can it be something like <Crop>
 //
-//        Assert.assertFalse(cr.isEmpty());
+        Assert.assertFalse(cr.isEmpty());
     }
 }

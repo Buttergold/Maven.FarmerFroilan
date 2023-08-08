@@ -3,6 +3,7 @@ package com.zipcodewilmington.froilansfarm.field;
 import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
+import com.zipcodewilmington.froilansfarm.field.crops.TomatoPlant;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,23 +37,11 @@ public class FieldTest {
 
     @Test
     public void testHasCrops(){
-        Field field = new Field();
-        CropRow cr = new CropRow();
-        Farmer bob = new Farmer();
-        CornStalk cs = new CornStalk();
+        Field field = new Field(1);
+        Assert.assertTrue(field.isClear());
 
-        field.add(cr);
+        field.get(0).add(new TomatoPlant());
+        Assert.assertFalse(field.isClear());
 
-        Assert.assertFalse(true);
-
-        // Think hard about what we are testing here
-        // Are we testing if the FARMER can plant?
-        // Are we testing if the FIELD can hold plants?
-        // remember - Single Responsibility - each Class should have its own methods that do specific actions
-        // if the action is not one of this current class, should it be tested here or somewhere else?
-
-//        bob.plant(cr, cs);
-//
-//        Assert.assertTrue(field.contains(cs));
     }
 }
