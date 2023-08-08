@@ -7,11 +7,11 @@ import java.util.List;
 
 public class ChickenCoop extends Shelter<Chicken> {
 
-    public boolean hasEggs(){
-        return false;
-    }
+//    public boolean hasEggs(){
+//        return false;
+//    }
 
-    public List<EdibleEgg> collectEggs(){
-        return null;
-    }
+//    public List<EdibleEgg> collectEggs(){
+//        return null;
+//    }
 }

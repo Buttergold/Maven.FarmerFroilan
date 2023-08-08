@@ -49,7 +49,7 @@ public class SimulateTheWeekTest {
         goToSleep();
 
         //MONDAY ROLLS BY
-        mondayRoutine();
+        morningRoutine();
         mondayRoutine();
         goToSleep();
     }
@@ -88,6 +88,11 @@ public class SimulateTheWeekTest {
         for(CropRow cr : theField){
             Assert.assertEquals(true, cr.hasBeenFertilized());
         }
+
+        // make sure the crop duster has got the correct state
+        Assert.assertEquals(false, cd.isInAir());
+        Assert.assertEquals(false, cd.isEngineOn());
+        Assert.assertNull(cd.getCurrentRider());
     }
 
     public void tuesdayRoutine(){

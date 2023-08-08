@@ -1,6 +1,8 @@
 package com.zipcodewilmington.froilansfarm;
 
 import com.zipcodewilmington.froilansfarm.animals.Animal;
+import com.zipcodewilmington.froilansfarm.animals.Chicken;
+import com.zipcodewilmington.froilansfarm.animals.Horse;
 import com.zipcodewilmington.froilansfarm.animals.people.Person;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
 import com.zipcodewilmington.froilansfarm.field.Field;
@@ -10,6 +12,7 @@ import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import com.zipcodewilmington.froilansfarm.vehicles.FarmVehicle;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -38,9 +41,9 @@ public class Farm {
         listOfCoops = new ArrayList<ChickenCoop>();
         populate(listOfCoops, ChickenCoop.class, numOfChickenCoops);
         // the field is just a field
-        theField = new Field();
+        theField = new Field(numOfCropRows);
         // i know setting the initial capacity doesn't do anything tbh
-        listOfFarmVehicles = new ArrayList<FarmVehicle>(2);
+        listOfFarmVehicles = new ArrayList<FarmVehicle>(numOfVehicles);
         myHouse = new FarmHouse();
     }
 
@@ -50,21 +53,18 @@ public class Farm {
         Constructor<?> cons = null;
         try {
             cons = shelterClass.getConstructor();
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        }
-
-        for(int i = 0; i < numOfShelter; i++){
-            try {
+            for(int i = 0; i < numOfShelter; i++){
                 T object = (T) cons.newInstance();
                 listToPopulate.add(object);
-            } catch (InstantiationException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
             }
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -116,8 +116,38 @@ public class Farm {
         this.theField = theField;
     }
 
-    public <T extends Animal> void addAnimalsToShelter(Class<T> c, int numOfAnimalsToAdd) {
+    public <T extends Animal> boolean addAnimalsToShelter(T exampleAnimal, int numOfAnimalsToAdd) {
+        Constructor<?> cons = null;
+        try {
+            cons = exampleAnimal.getClass().getConstructor();
+            List<? extends Shelter> aminalShelter;
+            if(exampleAnimal instanceof Chicken){
+                aminalShelter = listOfCoops;
+            }
+            else if(exampleAnimal instanceof Horse){
+                aminalShelter = listOfStables;
+            }
+            else{
+                return false;
+            }
+            int count = 0;
+            for(int i = 0; i < numOfAnimalsToAdd; i++){
+                T object = (T) cons.newInstance();
+                aminalShelter.get(count++).add(object);
+                count = count % aminalShelter.size();
+            }
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
+
     public <T extends Animal> void addAnimalsToShelter(T... animalsToAdd) {
         for(T aminal : animalsToAdd){
             if(aminal instanceof Person){
@@ -127,11 +157,19 @@ public class Farm {
     }
 
     public int getTotalNumOfHorses() {
-        return 0;
+        int total = 0;
+        for(Stable s : listOfStables){
+            total += s.size();
+        }
+        return total;
     }
 
     public int getTotalNumOfChickens() {
-        return 0;
+        int total = 0;
+        for(ChickenCoop cc : listOfCoops){
+            total += cc.size();
+        }
+        return total;
     }
 
     public int getTotalNumOfPeople() {

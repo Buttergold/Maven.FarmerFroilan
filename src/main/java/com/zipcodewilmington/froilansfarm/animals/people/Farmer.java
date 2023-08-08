@@ -14,6 +14,7 @@ import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Farmer extends Botanist implements Rider<Tractor> {
@@ -32,10 +33,16 @@ public class Farmer extends Botanist implements Rider<Tractor> {
     public void mount(Tractor tractor) {
         tractor.setCurrentRider(this);
     }
+    public void mount(Horse rideable){
+        rideable.setCurrentRider(this);
+    }
 
     @Override
     public void dismount(Tractor tractor) {
         tractor.setCurrentRider(null);
+    }
+    public void dismount(Horse rideable){
+        rideable.setCurrentRider(null);
     }
 
     @Override
@@ -63,15 +70,22 @@ public class Farmer extends Botanist implements Rider<Tractor> {
     }
 
     public <RiderType extends Rider> void rideAllHorses(List<Stable> stables, RiderType other){
+        List<Horse> allHorses = new ArrayList<Horse>();
         for(Stable s : stables){
-//            for(Horse h : s){
-//                if(!h.hasBeenRiddenToday()){
-//                    // horse hasn't been ridden, so go ride
-//                    other.mount(h);
-//                    h.ride();
-//                    other.dismount(h);
-//                }
-//            }
+            allHorses.addAll(s);
+        }
+        // now that we have all the horses, split them between you and other
+        for(int i = 0; i < allHorses.size(); i += 2){
+            // getting a runtime exception where we can't ride a horse because pilots can't ride horses for some reason
+            System.out.println(allHorses.get(i));
+            other.mount(allHorses.get(i));
+            allHorses.get(i).ride();
+            other.dismount(allHorses.get(i));
+            // do the same for farmer
+            // getting into the exception where Farmer cannot ride a horse???
+            this.mount(allHorses.get(i + 1));
+            allHorses.get(i + 1).ride();
+            this.dismount(allHorses.get(i + 1));
         }
     }
 

@@ -7,8 +7,6 @@ import com.zipcodewilmington.froilansfarm.field.CropRow;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 
 public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
-    private Pilot currentDriver;
-    private boolean isEngineOn ;
     private boolean isInAir ;
 
 
@@ -60,12 +58,13 @@ public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
         if (currentDriver == null) {
             return;
         }
+        startEngine();
         if (isEngineOn == false){
             return;
         }
         fly();
         operate(currentDriver.getFarm());
         isInAir = false;
-        isEngineOn = false;
+        turnOffEngine();
     }
 }

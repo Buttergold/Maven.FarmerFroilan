@@ -1,6 +1,7 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
 import com.zipcodewilmington.froilansfarm.Farm;
+import com.zipcodewilmington.froilansfarm.animals.Horse;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
 import com.zipcodewilmington.froilansfarm.edibles.Tomato;
@@ -43,25 +44,27 @@ public class Pilot extends Person implements Rider<CropDuster> {
             if (this.listOfFoodEaten.get(i) instanceof EdibleEgg) {
                 edibleEggCtr++;
             }
-        } if (earOfCornCtr >= 2 && tomatoCtr >= 1 && edibleEggCtr >= 2)
+        } if (earOfCornCtr >= 2 && tomatoCtr >= 1 && edibleEggCtr >= 2) {
             return true;
-
-
-            else{
-
-        
-        return false;}
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
     public void mount(CropDuster rideable) {
        rideable.setCurrentRider(this);
-
+    }
+    public void mount(Horse rideable) {
+        rideable.setCurrentRider(this);
     }
 
     @Override
     public void dismount(CropDuster rideable) {
         rideable.setCurrentRider(null);
-
+    }
+    public void dismount(Horse rideable) {
+        rideable.setCurrentRider(null);
     }
 }

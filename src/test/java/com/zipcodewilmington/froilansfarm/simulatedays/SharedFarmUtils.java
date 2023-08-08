@@ -32,8 +32,8 @@ public class SharedFarmUtils {
         Farm oldMacFarm = new Farm(3, 4, 5, 2);
 
         // add the animals
-        oldMacFarm.addAnimalsToShelter(Horse.class, 10);
-        oldMacFarm.addAnimalsToShelter(Chicken.class, 10);
+        oldMacFarm.addAnimalsToShelter(new Horse(), 10);
+        oldMacFarm.addAnimalsToShelter(new Chicken(), 10);
 
         // add vehicles
         oldMacFarm.addFarmVehicle(new CropDuster(), new Tractor());

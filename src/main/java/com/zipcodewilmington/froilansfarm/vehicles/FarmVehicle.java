@@ -6,7 +6,6 @@ import com.zipcodewilmington.froilansfarm.Rideable;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 
 public abstract class FarmVehicle<RiderType extends Rider> implements Vehicle<RiderType> {
-
     protected boolean isEngineOn;
     protected RiderType currentDriver;
 
