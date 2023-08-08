@@ -5,7 +5,7 @@ import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 public class Pilot extends Person implements Rider<CropDuster> {
     
     public String tomato; 
-    public String egg;
+    public String edibleEgg;
     public String earOfCorn;
 
     // constructor
@@ -28,7 +28,7 @@ public class Pilot extends Person implements Rider<CropDuster> {
     public boolean isFull(){
         int earOfCornCtr = 0;
         int tomatoCtr = 0;
-        int eggCtr = 0;
+        int edibleEggCtr = 0;
         for (int i = 0; i <this.listOfFoodEaten.size(); i++) {
             if (this.listOfFoodEaten.get(i).equals("earOfCorn")) {
                 earOfCornCtr++;
@@ -37,9 +37,9 @@ public class Pilot extends Person implements Rider<CropDuster> {
                 tomatoCtr++;
             }
             if (this.listOfFoodEaten.get(i).equals("egg")) {
-                eggCtr++;
+                edibleEggCtr++;
             }
-        } if (earOfCornCtr >= 2 && tomatoCtr >= 1 && eggCtr >= 2)
+        } if (earOfCornCtr >= 2 && tomatoCtr >= 1 && edibleEggCtr >= 2)
             return true;
 
 
