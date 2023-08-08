@@ -1,5 +1,6 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
+import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
 import com.zipcodewilmington.froilansfarm.edibles.Tomato;
@@ -13,7 +14,10 @@ public class Pilot extends Person implements Rider<CropDuster> {
         this("default pilot name");
     }
     public Pilot(String name){
-        super(name);
+        this(name, null);
+    }
+    public Pilot(String name, Farm farm){
+        super(name, farm);
     }
 
 

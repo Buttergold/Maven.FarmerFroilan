@@ -2,6 +2,9 @@ package com.zipcodewilmington.froilansfarm.animals.people;
 
 import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
+import com.zipcodewilmington.froilansfarm.animals.Chicken;
+import com.zipcodewilmington.froilansfarm.animals.Horse;
+import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
 import com.zipcodewilmington.froilansfarm.shelters.Shelter;
 
@@ -25,6 +28,9 @@ public abstract class Person extends Animal<Edible>{
     public Person(String name, Farm farm) {
         super(name);
         this.farm = farm;
+        if(farm != null){
+            farm.addAnimalsToShelter(this);
+        }
     }
 
     public Farm getFarm(){ return this.farm;}
@@ -32,16 +38,27 @@ public abstract class Person extends Animal<Edible>{
         return this.farm != null;
     }
 
-    @Override
-    public boolean isFull() {
-        return false;
-    }
+//    @Override
+//    public boolean isFull() {
+//        return false;
+//    }
 
-    public void feedAllAnimals(List<Shelter<Animal>> shelter){
-//        for(Shelter s : shelter){
-//            for(Animal<Food> a : s){
-//                if()
-//            }
-//        }
+    public <ShelterType extends Shelter> void feedAllAnimals(List<ShelterType> shelter){
+        for(ShelterType s : shelter){
+            for(Object o : s){
+                if(o instanceof Horse){
+                    Horse a = (Horse) o;
+                    while(!a.isFull()) {
+                        a.eat(new EarOfCorn());
+                    }
+                }
+                else if(o instanceof Chicken){
+                    Chicken a = (Chicken) o;
+                    while(!a.isFull()) {
+                        a.eat(new EarOfCorn());
+                    }
+                }
+            }
+        }
     }
 }
