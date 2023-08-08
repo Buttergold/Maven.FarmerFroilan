@@ -17,12 +17,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class FarmerTest {
-    // HI! Note to the person who wrote this code:
-    // I personally feel like this is pretty bad practice to have local variables
-    // Why? Tests are run independently and not necessarily in the order that you have written them in this file.
-    // If you want to set up variables that all Tests will use, look into the @Before tag
-    // Setting local variables up means that you're going to be constantly changing the state of these variables,
-    // and as such it's quite difficult to keep track of their exact state.
+
     @Test
     public void testInheritance() {
         Farmer froilan = new Farmer();

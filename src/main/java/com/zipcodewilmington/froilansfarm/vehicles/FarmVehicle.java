@@ -36,4 +36,6 @@ public abstract class FarmVehicle<RiderType extends Rider> implements Vehicle<Ri
     public void turnOffEngine() {
         isEngineOn = false;
     }
+
+    abstract boolean operate(Farm farm);
 }

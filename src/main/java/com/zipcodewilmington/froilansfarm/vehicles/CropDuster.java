@@ -15,6 +15,12 @@ public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
     public CropDuster(){
         this(null, false, false);
     }
+
+    @Override
+    boolean operate(Farm farm) {
+        return false;
+    }
+
     public CropDuster(Pilot currentDriver, boolean isEngineOn, boolean isInAir){
 
         super(currentDriver, isEngineOn);
@@ -46,7 +52,8 @@ public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
             return;
         }
         fly();
-        //operate(currentDriver.getFarm());
-
+        operate(currentDriver.getFarm());
+        isInAir = false;
+        isEngineOn = false;
     }
 }
