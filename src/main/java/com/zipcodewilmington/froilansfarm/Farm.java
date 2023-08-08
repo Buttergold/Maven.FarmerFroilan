@@ -6,7 +6,9 @@ import com.zipcodewilmington.froilansfarm.edibles.Edible;
 import com.zipcodewilmington.froilansfarm.field.Field;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import com.zipcodewilmington.froilansfarm.shelters.*;
+import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import com.zipcodewilmington.froilansfarm.vehicles.FarmVehicle;
+import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -137,5 +139,26 @@ public class Farm {
     }
 
     public void addFarmVehicle(FarmVehicle... farmVehicles) {
+        for(FarmVehicle fv : farmVehicles){
+            listOfFarmVehicles.add(fv);
+        }
+    }
+
+    public Tractor getTractor(){
+        for(FarmVehicle fv : listOfFarmVehicles){
+            if(fv instanceof Tractor){
+                return (Tractor) fv;
+            }
+        }
+        return null;
+    }
+
+    public CropDuster getCropDuster(){
+        for(FarmVehicle fv : listOfFarmVehicles){
+            if(fv instanceof CropDuster){
+                return (CropDuster) fv;
+            }
+        }
+        return null;
     }
 }

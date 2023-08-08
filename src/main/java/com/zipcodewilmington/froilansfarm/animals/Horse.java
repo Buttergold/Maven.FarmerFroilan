@@ -29,6 +29,9 @@ public class Horse extends Animal<EarOfCorn> implements Rideable<Rider> {
     public boolean hasBeenRiddenToday() {
         return hasBeenRiddenToday;
     }
+    public void resetRiddenToday(){
+        this.hasBeenRiddenToday = false;
+    }
 
     public String makeNoise() {
         return "Neigh!";

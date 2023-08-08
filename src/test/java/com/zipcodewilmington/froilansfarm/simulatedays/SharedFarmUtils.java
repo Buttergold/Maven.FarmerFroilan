@@ -4,6 +4,7 @@ import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.Chicken;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.animals.Horse;
+import com.zipcodewilmington.froilansfarm.animals.people.Person;
 import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
@@ -49,18 +50,18 @@ public class SharedFarmUtils {
         return oldMacFarm;
     }
 
-    public static void morningRoutine(Farmer farmer, Pilot pilot){
-        // ride all horses
-        rideAllHorsesTest(farmer, pilot);
-        // feed horses 3 ears of corn
-        feedHorsesTest(farmer);
-        // feed chickens 1 ear of corn
-        feedChickensTest(farmer);
-        // eat breakfast
-        eatBreakfastTest(farmer, pilot);
-    }
+//    public static void morningRoutine(Farmer farmer, Pilot pilot){
+//        // ride all horses
+//        rideAllHorsesTest(farmer, pilot);
+//        // feed horses 3 ears of corn
+//        feedHorsesTest(farmer);
+//        // feed chickens 1 ear of corn
+//        feedChickensTest(farmer);
+//        // eat breakfast
+//        eatBreakfastTest(farmer, pilot);
+//    }
 
-    private static void eatBreakfastTest(Farmer farmer, Pilot pilot) {
+    public static void eatBreakfastTest(Farmer farmer, Pilot pilot) {
         farmer.eat(new EdibleEgg(), new EdibleEgg(), new EdibleEgg(), new EdibleEgg(), new EdibleEgg());
         pilot.eat(new EdibleEgg(), new EdibleEgg());
 
@@ -74,7 +75,7 @@ public class SharedFarmUtils {
         Assert.assertEquals(true, pilot.isFull());
     }
 
-    private static void feedChickensTest(Farmer farmer) {
+    public static void feedChickensTest(Farmer farmer) {
         farmer.feedAllAnimals(farmer.getFarm().getListOfCoops());
 
         List<ChickenCoop> allTheStables = farmer.getFarm().getListOfCoops();
@@ -85,7 +86,7 @@ public class SharedFarmUtils {
         }
     }
 
-    private static void feedHorsesTest(Farmer farmer) {
+    public static void feedHorsesTest(Farmer farmer) {
         farmer.feedAllAnimals(farmer.getFarm().getListOfStables());
 
         List<Stable> allTheStables = farmer.getFarm().getListOfStables();
@@ -103,6 +104,27 @@ public class SharedFarmUtils {
         for(Stable s : allTheStables){
             for(Horse h : s){
                 Assert.assertEquals(true, h.hasBeenRiddenToday());
+            }
+        }
+    }
+
+    public static <PersonType extends Person> void resetPeople(PersonType hooman) {
+        hooman.getListOfFoodEaten().clear();
+    }
+
+    public static void resetHorses(List<Stable> listOfStables) {
+        for(Stable s : listOfStables){
+            for(Horse h : s){
+                h.getListOfFoodEaten().clear();
+                h.resetRiddenToday();
+            }
+        }
+    }
+
+    public static void resetChicken(List<ChickenCoop> listOfCoops) {
+        for(ChickenCoop cc : listOfCoops){
+            for(Chicken c : cc){
+                c.getListOfFoodEaten().clear();
             }
         }
     }
