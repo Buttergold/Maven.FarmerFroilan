@@ -13,6 +13,10 @@ public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
     public CropDuster(){
         this(null, false, false);
     }
+    public CropDuster(Pilot currentDriver, Boolean isEngineOn, Boolean isInAir){
+        super(currentDriver, isEngineOn);
+        this.isInAir = isInAir;
+    }
 
     public boolean isInAir() {
         return isInAir;
