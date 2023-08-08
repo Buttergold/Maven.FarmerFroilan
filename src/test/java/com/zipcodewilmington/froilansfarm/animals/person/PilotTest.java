@@ -9,18 +9,16 @@ import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
+import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PilotTest {
-    // check the note for Farmer!!!
-    Pilot landa = new Pilot();
-    CropDuster duster = new CropDuster();
-    Farm farm = new Farm();
 
     @Test
-    public void testInheritance(){
+    public void testInheritance() {
         Pilot landa = new Pilot();
 
         Assert.assertTrue(landa instanceof Rider);
@@ -31,7 +29,9 @@ public class PilotTest {
     }
 
     @Test
-    public void testMount(){
+    public void testMount() {
+        Pilot landa = new Pilot();
+        CropDuster duster = new CropDuster();
 
         Assert.assertNull(duster.getCurrentRider());
         landa.mount(duster);
@@ -41,7 +41,10 @@ public class PilotTest {
     }
 
     @Test
-    public void testDismount(){
+    public void testDismount() {
+        Pilot landa = new Pilot();
+        CropDuster duster = new CropDuster();
+
         landa.mount(duster);
 
         Assert.assertEquals(landa, duster.getCurrentRider());
@@ -51,7 +54,9 @@ public class PilotTest {
     }
 
     @Test
-    public void testEat(){
+    public void testEat() {
+        Pilot landa = new Pilot();
+
         int expected = 1;
         Assert.assertNull(landa.getListOfFoodEaten());
 
@@ -62,7 +67,9 @@ public class PilotTest {
     }
 
     @Test
-    public void testEat2(){
+    public void testEat2() {
+
+        Pilot landa = new Pilot();
         EarOfCorn corn = new EarOfCorn();
 
         landa.eat(corn);
@@ -71,7 +78,8 @@ public class PilotTest {
     }
 
     @Test
-    public void testMakeNoise(){
+    public void testMakeNoise() {
+        Pilot landa = new Pilot();
         String expected = "Weeeeeeeeeeeeeee!!";
 
         String actual = landa.makeNoise();
@@ -80,7 +88,7 @@ public class PilotTest {
     }
 
     @Test
-    public void testFarm(){ //is this needed?
+    public void testFarm() { //is this needed?
         //given
 
         //when
@@ -91,9 +99,11 @@ public class PilotTest {
     }
 
     @Test
-    public void testUseCropduster(){  //this seems redundant.  similar function on cropduster
+    public void testUseCropduster() {  //this seems redundant.  similar function on cropduster
 
     }
+
     @Test
-    public void isFullTest(){}
+    public void isFullTest() {
+    }
 }
