@@ -49,13 +49,10 @@ public class CropdusterTest {
 
     @Test
     public void testOperate(){
-        Farm farm = new Farm();
+
         Pilot froilanda = new Pilot("Froilanda");
-        CropDuster duster = new CropDuster(froilanda, true, true);
+        CropDuster duster = new CropDuster();
 
-
-
-        System.out.println(duster.operate(froilanda.getFarm()));
 
     }
 
