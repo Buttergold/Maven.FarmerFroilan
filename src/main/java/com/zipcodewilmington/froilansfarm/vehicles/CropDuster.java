@@ -7,18 +7,30 @@ import com.zipcodewilmington.froilansfarm.field.CropRow;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 
 public class CropDuster extends FarmVehicle<Pilot> implements Aircraft {
-    Pilot currentDriver;
-    boolean isEngineOn ;
-    boolean isInAir ;
+    private Pilot currentDriver;
+    private boolean isEngineOn ;
+    private boolean isInAir ;
 
 
     public CropDuster(){
         this(null, false, false);
     }
 
+    public boolean isInAir() {
+        return isInAir;
+    }
+
+    public void setInAir(boolean inAir) {
+        isInAir = inAir;
+    }
+
     @Override
     boolean operate(Farm farm) {
-        return false;
+        if (!isInAir || farm.getField().isClear()){return false;}
+        for(CropRow cr : farm.getField()){
+            fertilize(cr);
+        }
+        return true;
     }
 
     public CropDuster(Pilot currentDriver, boolean isEngineOn, boolean isInAir){
