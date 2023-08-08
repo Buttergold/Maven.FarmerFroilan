@@ -3,6 +3,7 @@ package com.zipcodewilmington.froilansfarm.animals.person;
 import com.zipcodewilmington.froilansfarm.NoiseMaker;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
 import com.zipcodewilmington.froilansfarm.animals.Eater;
+import com.zipcodewilmington.froilansfarm.animals.Horse;
 import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.animals.people.Person;
@@ -12,9 +13,13 @@ import com.zipcodewilmington.froilansfarm.edibles.Tomato;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
 import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
 import com.zipcodewilmington.froilansfarm.field.crops.TomatoPlant;
+import com.zipcodewilmington.froilansfarm.shelters.Stable;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.Array;
+import java.util.ArrayList;
 
 public class FarmerTest {
 
@@ -74,16 +79,22 @@ public class FarmerTest {
     }
 
     @Test
-    public void testFeedAllAnimals(){
-
+    public void testFeedAllHorses(){
         // good question: figure out how you want it to work
         // will we feed the animals a set amount based on what type of animal it is
         // maybe once that's done we can get all the horses on the barn and see if they're full
         // there are many options - we can even not test this since it's more relevant to
         // simulating the work week
-
-//        Assert.assertNotNull(horse.getListOfFoodEaten());
-        Assert.assertTrue(false);
+        // Given
+        Farmer froilan = new Farmer();
+        Stable theStable = new Stable();
+        theStable.add(new Horse());
+        ArrayList<Stable> theStablesPlural = new ArrayList<Stable>();
+        theStablesPlural.add(theStable);
+        // When
+        froilan.feedAllAnimals(theStablesPlural);
+        // Then
+        Assert.assertEquals(true, theStable.get(0).isFull());
     }
 
     @Test

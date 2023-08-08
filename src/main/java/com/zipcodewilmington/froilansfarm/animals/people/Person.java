@@ -2,6 +2,8 @@ package com.zipcodewilmington.froilansfarm.animals.people;
 
 import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.Animal;
+import com.zipcodewilmington.froilansfarm.animals.Chicken;
+import com.zipcodewilmington.froilansfarm.animals.Horse;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
 import com.zipcodewilmington.froilansfarm.shelters.Shelter;
@@ -44,8 +46,14 @@ public abstract class Person extends Animal<Edible>{
     public <ShelterType extends Shelter> void feedAllAnimals(List<ShelterType> shelter){
         for(ShelterType s : shelter){
             for(Object o : s){
-                if(o instanceof Animal){
-                    Animal a = (Animal) o;
+                if(o instanceof Horse){
+                    Horse a = (Horse) o;
+                    while(!a.isFull()) {
+                        a.eat(new EarOfCorn());
+                    }
+                }
+                else if(o instanceof Chicken){
+                    Chicken a = (Chicken) o;
                     while(!a.isFull()) {
                         a.eat(new EarOfCorn());
                     }
