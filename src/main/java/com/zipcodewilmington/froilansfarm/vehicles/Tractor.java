@@ -1,5 +1,6 @@
 package com.zipcodewilmington.froilansfarm.vehicles;
 
+import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.edibles.Edible;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
@@ -30,5 +31,15 @@ public class Tractor extends FarmVehicle<Farmer>{
     @Override
     public void ride() {
 
+        if (currentDriver == null);{
+                return;
+        }
+
+
+    }
+
+    @Override
+    boolean operate(Farm farm) {
+        return false;
     }
 }
