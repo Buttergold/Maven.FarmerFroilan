@@ -1,5 +1,8 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
+import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
+import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
+import com.zipcodewilmington.froilansfarm.edibles.Tomato;
 import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 
 public class Pilot extends Person implements Rider<CropDuster> {
@@ -30,13 +33,13 @@ public class Pilot extends Person implements Rider<CropDuster> {
         int tomatoCtr = 0;
         int edibleEggCtr = 0;
         for (int i = 0; i <this.listOfFoodEaten.size(); i++) {
-            if (this.listOfFoodEaten.get(i).equals("earOfCorn")) {
+            if (this.listOfFoodEaten.get(i) instanceof EarOfCorn) {
                 earOfCornCtr++;
             }
-            if (this.listOfFoodEaten.get(i).equals("tomato")) {
+            if (this.listOfFoodEaten.get(i) instanceof Tomato) {
                 tomatoCtr++;
             }
-            if (this.listOfFoodEaten.get(i).equals("egg")) {
+            if (this.listOfFoodEaten.get(i) instanceof EdibleEgg) {
                 edibleEggCtr++;
             }
         } if (earOfCornCtr >= 2 && tomatoCtr >= 1 && edibleEggCtr >= 2)

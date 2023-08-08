@@ -9,6 +9,7 @@ import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
+import com.zipcodewilmington.froilansfarm.edibles.Tomato;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import org.junit.Assert;
@@ -87,23 +88,35 @@ public class PilotTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testFarm() { //is this needed?
-        //given
-
-        //when
-        // ??
-
-        //then
-//        Assert.assertTrue(farm.getMyHouse().contains(froilanda));
-    }
-
-    @Test
-    public void testUseCropduster() {  //this seems redundant.  similar function on cropduster
-
-    }
 
     @Test
     public void isFullTest() {
+        //Given
+        Pilot pilot = new Pilot();
+        pilot.eat(new EarOfCorn(),new EarOfCorn(),new EdibleEgg(), new EdibleEgg(), new Tomato());
+
+
+        //When
+        boolean notHungry = true;
+        notHungry = pilot.isFull();
+
+        //Then
+        Assert.assertTrue(notHungry);
+
+    }
+    @Test
+    public void isNotFullTest(){
+        //Given
+        Pilot pilot = new Pilot();
+        pilot.eat(new EarOfCorn(),new EdibleEgg(), new Tomato());
+
+
+        //When
+        boolean hungry = false;
+        hungry = pilot.isFull();
+
+        //Then
+        Assert.assertFalse(hungry);
+
     }
 }
