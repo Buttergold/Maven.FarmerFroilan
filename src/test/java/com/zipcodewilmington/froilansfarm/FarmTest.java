@@ -4,17 +4,18 @@ import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.shelters.ChickenCoop;
 import com.zipcodewilmington.froilansfarm.shelters.Stable;
-import com.zipcodewilmington.froilansfarm.vehicles.Cropduster;
+import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
+import com.zipcodewilmington.froilansfarm.vehicles.FarmVehicle;
 import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 import org.junit.Assert;
 import org.junit.Test;
 import com.zipcodewilmington.froilansfarm.animals.*;
 
-class FarmTest {
+public class FarmTest {
     @Test
     public void constructorTest() {
         //Given
-        String expectedSize = 1;
+        int expectedSize = 1;
         //When
         // should be stables, coops, croprows, vehicles
         Farm thefarm = new Farm(1, 1, 1, 1);
@@ -22,7 +23,7 @@ class FarmTest {
         Assert.assertEquals(expectedSize, thefarm.getListOfStables().size());
         Assert.assertEquals(expectedSize, thefarm.getListOfCoops().size());
         Assert.assertEquals(expectedSize, thefarm.getField().size());
-        Assert.assertEquals(expectedSize, thefarm.getListOfVehicles().size());
+        Assert.assertEquals(0, thefarm.getListOfFarmVehicles().size());
     }
 
     @Test
@@ -31,7 +32,7 @@ class FarmTest {
         int expected = 5;
         Farm thefarm = new Farm(3, 3, 1, 1);
         //When
-        thefarm.addAnimalsToShelter(Horse.class, expected);
+        thefarm.addAnimalsToShelter(new Horse(), expected);
         //Then
         Assert.assertEquals(expected, thefarm.getTotalNumOfHorses());
         for (Stable s : thefarm.getListOfStables()) {
@@ -46,7 +47,7 @@ class FarmTest {
         int expected = 5;
         Farm thefarm = new Farm(3, 3, 1, 1);
         //When
-        thefarm.addAnimalsToShelter(Chicken.class, 5);
+        thefarm.addAnimalsToShelter(new Chicken(), 5);
         //Then
         Assert.assertEquals(expected, thefarm.getTotalNumOfChickens());
         for (ChickenCoop cc : thefarm.getListOfCoops()) {
@@ -58,7 +59,7 @@ class FarmTest {
     @Test
     public void addPeopleToShelterTest() {
         //Given
-        int expected = 5;
+        int expected = 3;
         Farm thefarm = new Farm(3, 3, 1, 1);
         //When
         thefarm.addAnimalsToShelter(new Farmer(), new Farmer(), new Pilot());
@@ -73,11 +74,37 @@ class FarmTest {
         int expected = 2;
         Farm thefarm = new Farm(3, 3, 1, expected);
         Tractor t = new Tractor();
-        Cropduster c = new Cropduster();
+        CropDuster c = new CropDuster();
         //When
         thefarm.addFarmVehicle(t, c);
         //Then
         Assert.assertTrue(thefarm.getListOfFarmVehicles().contains(t));
         Assert.assertTrue(thefarm.getListOfFarmVehicles().contains(c));
+    }
+
+    @Test
+    public void getTractorTest(){
+        //Given
+        Farm thefarm = new Farm(3, 3, 1, 2);
+        Tractor t = new Tractor();
+        CropDuster c = new CropDuster();
+        thefarm.addFarmVehicle(t, c);
+        //When
+        FarmVehicle actual = thefarm.getTractor();
+        //Then
+        Assert.assertEquals(true, actual instanceof Tractor);
+    }
+
+    @Test
+    public void getCropDusterTest(){
+        //Given
+        Farm thefarm = new Farm(3, 3, 1, 2);
+        Tractor t = new Tractor();
+        CropDuster c = new CropDuster();
+        thefarm.addFarmVehicle(t, c);
+        //When
+        FarmVehicle actual = thefarm.getCropDuster();
+        //Then
+        Assert.assertEquals(true, actual instanceof CropDuster);
     }
 }

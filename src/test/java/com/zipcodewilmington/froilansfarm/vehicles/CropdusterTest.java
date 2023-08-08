@@ -1,11 +1,13 @@
 package com.zipcodewilmington.froilansfarm.vehicles;
 
+import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.NoiseMaker;
 import com.zipcodewilmington.froilansfarm.Rideable;
 import com.zipcodewilmington.froilansfarm.animals.people.Person;
 import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
+import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +16,7 @@ public class CropdusterTest {
 
     @Test
     public void testInheritance(){
-        Cropduster cropduster = new Cropduster();
+        CropDuster cropduster = new CropDuster();
 
         Assert.assertTrue(cropduster instanceof Aircraft);
         Assert.assertTrue(cropduster instanceof FarmVehicle);
@@ -25,9 +27,11 @@ public class CropdusterTest {
 
     @Test
     public void testFertilize(){
-        Cropduster duster = new Cropduster();
+        CropDuster duster = new CropDuster();
         CropRow row = new CropRow();
-        row.setHasCrops(true);
+        System.out.println(row.hasCrops());
+        row.add(new CornStalk());
+        System.out.println(row.hasCrops());
 
         duster.fertilize(row);
 
@@ -35,34 +39,45 @@ public class CropdusterTest {
     }
 
     @Test
-    public void testFly(){  // How does fly() work??
+    public void testFly(){
+        CropDuster duster = new CropDuster();
+        Assert.assertFalse(duster.isInAir());
+        duster.fly();
 
+        Assert.assertTrue(duster.isInAir());
     }
 
     @Test
     public void testOperate(){
+        Farm farm = new Farm();
+        Pilot froilanda = new Pilot("Froilanda",farm);
+        CropDuster duster = new CropDuster(froilanda, true, true);
+        farm.getField().get(0).add(new CornStalk());
 
+        Assert.assertTrue(duster.isEngineOn());
+        Assert.assertTrue(duster.isInAir());
+        Assert.assertTrue(duster.operate(farm));
     }
 
     @Test
     public void testEngine(){
         //given
-        Cropduster duster = new Cropduster();
+        CropDuster duster = new CropDuster();
         //when
         duster.startEngine();
         //then
-        Assert.assertTrue(duster.getIsEngineOn());
+        Assert.assertTrue(duster.isEngineOn());
 
         //when
-        duster.turnEngineOff();
-        Assert.assertFalse(duster.getIsEngineOn());
+        duster.turnOffEngine();
+        Assert.assertFalse(duster.isEngineOn());
     }
 
     @Test
     public void testSetRider(){
         //given
-        Cropduster duster = new Cropduster();
-        Rider pilot = new Pilot();
+        CropDuster duster = new CropDuster();
+        Pilot pilot = new Pilot();
 
         duster.setCurrentRider(pilot);
 
@@ -74,7 +89,7 @@ public class CropdusterTest {
 
     @Test
     public void testMakeNoise(){
-        Cropduster duster = new Cropduster();
+        CropDuster duster = new CropDuster();
         String expected = "Vvvvrrrrrrroooooooooooooom";
 
         String actual = duster.makeNoise();

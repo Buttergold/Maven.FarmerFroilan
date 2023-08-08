@@ -1,8 +1,6 @@
 package com.zipcodewilmington.froilansfarm.field;
 
-import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
-import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
-import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
+import com.zipcodewilmington.froilansfarm.field.crops.TomatoPlant;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,16 +16,16 @@ public class FieldTest {
     }
 
     @Test
-    public void testEmpty(){
+    public void testIsClear(){
         Field field = new Field();
-        Assert.assertTrue(field.isEmpty());
+        Assert.assertTrue(field.isClear());
 
     }
 
     @Test
-    public void testHasCropRows(){
-        Field field = new Field();
-        CropRow row = new CropRow();
+    public void testHasCropRows(){  //not a good test
+        Field field = new Field(5);
+        CropRow row = new CropRow(5);
 
         field.add(row);
 
@@ -36,14 +34,11 @@ public class FieldTest {
 
     @Test
     public void testHasCrops(){
-        Field field = new Field();
-        CropRow cr = new CropRow();
-        Farmer bob = new Farmer();
-        CornStalk cs = new CornStalk();
+        Field field = new Field(1);
+        Assert.assertTrue(field.isClear());
 
-        field.add(cr);
-        bob.plant(cr, cs);
+        field.get(0).add(new TomatoPlant());
+        Assert.assertFalse(field.isClear());
 
-        Assert.assertTrue(field.contains(cs));
     }
 }

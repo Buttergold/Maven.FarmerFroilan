@@ -9,18 +9,18 @@ import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
 import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
-import com.zipcodewilmington.froilansfarm.vehicles.Cropduster;
+import com.zipcodewilmington.froilansfarm.edibles.Tomato;
+import com.zipcodewilmington.froilansfarm.field.crops.Crop;
+import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PilotTest {
 
-    Pilot landa = new Pilot();
-    Cropduster duster = new Cropduster();
-    Farm farm = new Farm();
-
     @Test
-    public void testInheritance(){
+    public void testInheritance() {
+        Pilot landa = new Pilot();
 
         Assert.assertTrue(landa instanceof Rider);
         Assert.assertTrue(landa instanceof Person);
@@ -30,38 +30,47 @@ public class PilotTest {
     }
 
     @Test
-    public void testMount(){
+    public void testMount() {
+        Pilot landa = new Pilot();
+        CropDuster duster = new CropDuster();
 
         Assert.assertNull(duster.getCurrentRider());
         landa.mount(duster);
-        Person actual = duster.getCurrentRider();
+        Pilot actual = duster.getCurrentRider();
 
         Assert.assertEquals(landa, actual);
     }
 
     @Test
-    public void testDismount(){
-        landa.mount(dusty);
+    public void testDismount() {
+        Pilot landa = new Pilot();
+        CropDuster duster = new CropDuster();
 
-        Assert.assertEquals(landa, dusty.getCurrentRider());
-        landa.dismount(dusty);
+        landa.mount(duster);
 
-        Assert.assertNull(dusty.getCurrentRider());
+        Assert.assertEquals(landa, duster.getCurrentRider());
+        landa.dismount(duster);
+
+        Assert.assertNull(duster.getCurrentRider());
     }
 
     @Test
-    public void testEat(){
+    public void testEat() {
+        Pilot landa = new Pilot();
+
         int expected = 1;
-        Assert.assertNull(landa.getListOfFoodEaten());
+        Assert.assertTrue(landa.getListOfFoodEaten().isEmpty());
 
         landa.eat(new EdibleEgg());
-        int actual = landa.getListOfFoodEaten().size;
+        int actual = landa.getListOfFoodEaten().size();
 
-        Assert.assertEquals(expected, actual);
+       Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void testEat2(){
+    public void testEat2() {
+
+        Pilot landa = new Pilot();
         EarOfCorn corn = new EarOfCorn();
 
         landa.eat(corn);
@@ -70,7 +79,8 @@ public class PilotTest {
     }
 
     @Test
-    public void testMakeNoise(){
+    public void testMakeNoise() {
+        Pilot landa = new Pilot();
         String expected = "Weeeeeeeeeeeeeee!!";
 
         String actual = landa.makeNoise();
@@ -78,19 +88,35 @@ public class PilotTest {
         Assert.assertEquals(expected, actual);
     }
 
+
     @Test
-    public void testFarm(){ //is this needed?
-        //given
+    public void isFullTest() {
+        //Given
+        Pilot pilot = new Pilot();
+        pilot.eat(new EarOfCorn(),new EarOfCorn(),new EdibleEgg(), new EdibleEgg(), new Tomato());
 
-        //when
-        // ??
 
-        //then
-        Assert.assertTrue(farm.getMyHouse().contains(froilanda));
+        //When
+        boolean notHungry = true;
+        notHungry = pilot.isFull();
+
+        //Then
+        Assert.assertTrue(notHungry);
+
     }
-
     @Test
-    public void testUseCropduster(){  //this seems redundant.  similar function on cropduster
+    public void isNotFullTest(){
+        //Given
+        Pilot pilot = new Pilot();
+        pilot.eat(new EarOfCorn(),new EdibleEgg(), new Tomato());
+
+
+        //When
+        boolean hungry = false;
+        hungry = pilot.isFull();
+
+        //Then
+        Assert.assertFalse(hungry);
 
     }
 }
