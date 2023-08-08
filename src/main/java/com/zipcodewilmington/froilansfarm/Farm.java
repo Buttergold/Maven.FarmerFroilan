@@ -1,15 +1,12 @@
 package com.zipcodewilmington.froilansfarm;
 
 import com.zipcodewilmington.froilansfarm.animals.Animal;
-import com.zipcodewilmington.froilansfarm.animals.Chicken;
-import com.zipcodewilmington.froilansfarm.animals.Horse;
 import com.zipcodewilmington.froilansfarm.animals.people.Person;
+import com.zipcodewilmington.froilansfarm.edibles.Edible;
 import com.zipcodewilmington.froilansfarm.field.Field;
 import com.zipcodewilmington.froilansfarm.field.crops.Crop;
 import com.zipcodewilmington.froilansfarm.shelters.*;
-import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 import com.zipcodewilmington.froilansfarm.vehicles.FarmVehicle;
-import com.zipcodewilmington.froilansfarm.vehicles.Tractor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -26,7 +23,7 @@ public class Farm {
     // IDEA! should this be a regular object array?
     // if the number of vehicles doesn't change on a day to day basis,
     // i don't see why this CAN'T be a regular array
-    private HashMap<Crop, Integer> barn;
+    private HashMap<Edible, Integer> barn;
     private Field theField;
 
     // biiiig constructor
@@ -42,6 +39,7 @@ public class Farm {
         theField = new Field();
         // i know setting the initial capacity doesn't do anything tbh
         listOfFarmVehicles = new ArrayList<FarmVehicle>(2);
+        myHouse = new FarmHouse();
     }
 
     private <T extends Shelter> void populate(List<T> listToPopulate, Class<T> shelterClass, int numOfShelter) {
@@ -49,7 +47,7 @@ public class Farm {
         // shaky on how it works but it's a factory
         Constructor<?> cons = null;
         try {
-            cons = shelterClass.getConstructor(String.class);
+            cons = shelterClass.getConstructor();
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
@@ -100,11 +98,11 @@ public class Farm {
         this.listOfFarmVehicles = listOfFarmVehicles;
     }
 
-    public HashMap<Crop, Integer> getBarn() {
+    public HashMap<Edible, Integer> getBarn() {
         return barn;
     }
 
-    public void setBarn(HashMap<Crop, Integer> barn) {
+    public void setBarn(HashMap<Edible, Integer> barn) {
         this.barn = barn;
     }
 

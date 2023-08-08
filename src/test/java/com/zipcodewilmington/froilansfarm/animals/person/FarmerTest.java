@@ -6,6 +6,8 @@ import com.zipcodewilmington.froilansfarm.animals.Eater;
 import com.zipcodewilmington.froilansfarm.animals.people.Botanist;
 import com.zipcodewilmington.froilansfarm.animals.people.Farmer;
 import com.zipcodewilmington.froilansfarm.animals.people.Person;
+import com.zipcodewilmington.froilansfarm.edibles.EarOfCorn;
+import com.zipcodewilmington.froilansfarm.edibles.EdibleEgg;
 import com.zipcodewilmington.froilansfarm.edibles.Tomato;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
 import com.zipcodewilmington.froilansfarm.field.crops.CornStalk;
@@ -109,5 +111,27 @@ public class FarmerTest {
         froilan.plant(row, new CornStalk());
         //Then
         row.hasCrops();
+    }
+
+    @Test
+    public void isNotFullTest(){
+        //Given
+        Farmer froilan = new Farmer();
+        froilan.eat(new EarOfCorn(), new Tomato(), new EdibleEgg());
+        //When
+        boolean actual = froilan.isFull();
+        //Then
+        Assert.assertEquals(false, actual);
+    }
+    @Test
+    public void isFullTest(){
+        //Given
+        Farmer froilan = new Farmer();
+        froilan.eat(new EarOfCorn(), new Tomato(), new EdibleEgg(), new Tomato(), new EdibleEgg());
+        froilan.eat(new EdibleEgg(), new EdibleEgg(), new EdibleEgg());
+        //When
+        boolean actual = froilan.isFull();
+        //Then
+        Assert.assertEquals(true, actual);
     }
 }

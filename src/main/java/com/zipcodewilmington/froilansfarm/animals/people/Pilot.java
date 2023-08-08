@@ -1,5 +1,6 @@
 package com.zipcodewilmington.froilansfarm.animals.people;
 
+import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 
 public class Pilot extends Person implements Rider<CropDuster> {
@@ -9,6 +10,10 @@ public class Pilot extends Person implements Rider<CropDuster> {
     }
     public Pilot(String name){
         super(name);
+    }
+
+    public Pilot(String name, Farm farm){
+        super(name, farm);
     }
 
     @Override
