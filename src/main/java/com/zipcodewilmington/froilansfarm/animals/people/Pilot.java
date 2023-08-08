@@ -6,10 +6,7 @@ import com.zipcodewilmington.froilansfarm.edibles.Tomato;
 import com.zipcodewilmington.froilansfarm.vehicles.CropDuster;
 
 public class Pilot extends Person implements Rider<CropDuster> {
-    
-    public String tomato; 
-    public String edibleEgg;
-    public String earOfCorn;
+
 
     // constructor
     public Pilot(){
@@ -54,11 +51,13 @@ public class Pilot extends Person implements Rider<CropDuster> {
 
     @Override
     public void mount(CropDuster rideable) {
+       rideable.setCurrentRider(this);
 
     }
 
     @Override
     public void dismount(CropDuster rideable) {
+        rideable.setCurrentRider(null);
 
     }
 }

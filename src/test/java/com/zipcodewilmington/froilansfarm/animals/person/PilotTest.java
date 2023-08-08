@@ -59,12 +59,12 @@ public class PilotTest {
         Pilot landa = new Pilot();
 
         int expected = 1;
-        Assert.assertNull(landa.getListOfFoodEaten());
+        Assert.assertTrue(landa.getListOfFoodEaten().isEmpty());
 
         landa.eat(new EdibleEgg());
         int actual = landa.getListOfFoodEaten().size();
 
-        Assert.assertEquals(expected, actual);
+       Assert.assertEquals(expected, actual);
     }
 
     @Test
