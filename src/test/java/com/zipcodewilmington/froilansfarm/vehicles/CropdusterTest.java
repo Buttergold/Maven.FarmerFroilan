@@ -3,6 +3,7 @@ package com.zipcodewilmington.froilansfarm.vehicles;
 import com.zipcodewilmington.froilansfarm.Farm;
 import com.zipcodewilmington.froilansfarm.NoiseMaker;
 import com.zipcodewilmington.froilansfarm.Rideable;
+import com.zipcodewilmington.froilansfarm.animals.people.Person;
 import com.zipcodewilmington.froilansfarm.animals.people.Pilot;
 import com.zipcodewilmington.froilansfarm.animals.people.Rider;
 import com.zipcodewilmington.froilansfarm.field.CropRow;
@@ -48,11 +49,13 @@ public class CropdusterTest {
 
     @Test
     public void testOperate(){
-        CropDuster duster = new CropDuster(new Pilot("froilanda"), true, true);
+        Farm farm = new Farm();
+        Pilot froilanda = new Pilot("Froilanda");
+        CropDuster duster = new CropDuster(froilanda, true, true);
 
 
 
-//        System.out.println(duster.operate(froilanda.getFarm()));
+        System.out.println(duster.operate(froilanda.getFarm()));
 
     }
 
